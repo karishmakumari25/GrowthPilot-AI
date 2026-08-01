@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import Navbar from './Navbar';
-import Footer from './Footer';
 
 function Layout({ children }) {
   const [showTop, setShowTop] = useState(false);
@@ -15,18 +13,14 @@ function Layout({ children }) {
 
   return (
     <>
-      <Navbar />
-
       <main>{children}</main>
 
-      <Footer />
-
-      <a href="https://wa.me/18005550199" className="whatsapp-fab" target="_blank" rel="noreferrer" aria-label="Contact on WhatsApp">
-        <span>💬</span>
-      </a>
-
       {showTop && (
-        <button className="scroll-top" onClick={scrollToTop} aria-label="Scroll to top">
+        <button 
+          className="fixed bottom-6 right-6 z-50 bg-primary-container text-on-primary-container p-3 rounded-full shadow-lg hover:bg-primary transition-all font-bold"
+          onClick={scrollToTop} 
+          aria-label="Scroll to top"
+        >
           ↑
         </button>
       )}
