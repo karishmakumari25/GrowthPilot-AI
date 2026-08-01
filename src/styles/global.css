@@ -1,0 +1,63 @@
+@import './variables.css';
+@import './navbar.css';
+@import './footer.css';
+@import './home.css';
+@import './analyzer.css';
+@import './pricing.css';
+@import './competitor.css';
+@import './referral.css';
+@import './contact.css';
+@import './dashboard.css';
+@import './responsive.css';
+
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--color-bg), var(--color-surface));
+  color: var(--color-text);
+}
+
+::selection {
+  background: rgba(94, 234, 212, 0.3);
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+#root {
+  min-height: 100vh;
+}

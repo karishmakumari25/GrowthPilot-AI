@@ -1,0 +1,140 @@
+.competitor-page {
+  padding: 4.5rem 0 5rem;
+}
+
+.competitor-hero {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.competitor-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.competitor-hero p {
+  margin: 0 auto;
+  max-width: 700px;
+  color: var(--color-muted);
+}
+
+.competitor-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.competitor-card,
+.competitor-report {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+}
+
+.competitor-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.form-error-block {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+}
+
+.form-error {
+  margin: 0;
+  color: #fecaca;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.85rem 0.95rem;
+  background: rgba(7, 17, 31, 0.65);
+  color: var(--color-text);
+}
+
+.competitor-report--loading {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.report-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.report-grid--four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.report-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.metric-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 999px;
+  background: rgba(94, 234, 212, 0.14);
+  font-size: 1rem;
+  margin-bottom: 0.65rem;
+}
+
+.metric-value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .competitor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-grid--four,
+  .report-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row,
+  .report-grid--four,
+  .report-grid--two {
+    grid-template-columns: 1fr;
+  }
+}

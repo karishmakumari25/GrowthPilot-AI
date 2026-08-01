@@ -1,0 +1,168 @@
+.referral-page {
+  padding: 4.5rem 0 5rem;
+}
+
+.referral-hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.referral-hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.referral-hero p {
+  margin: 0 auto;
+  max-width: 700px;
+  color: var(--color-muted);
+}
+
+.referral-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.referral-card,
+.referral-earnings,
+.referral-steps,
+.referral-benefits,
+.referral-faq,
+.referral-cta {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+}
+
+.referral-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-field label {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+}
+
+.form-field input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.85rem 0.95rem;
+  background: rgba(7, 17, 31, 0.65);
+  color: var(--color-text);
+}
+
+.earnings-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.earnings-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.progress-card {
+  padding: 1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.16), rgba(59, 130, 246, 0.16));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  margin-top: 0.6rem;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-strong));
+}
+
+.steps-grid,
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.step-card,
+.benefit-card,
+.faq-item {
+  padding: 1rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.step-icon,
+.benefit-icon {
+  font-size: 1.3rem;
+  margin-bottom: 0.6rem;
+}
+
+.referral-faq {
+  margin-top: 1rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.referral-cta {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .referral-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .form-row,
+  .steps-grid,
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .referral-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
