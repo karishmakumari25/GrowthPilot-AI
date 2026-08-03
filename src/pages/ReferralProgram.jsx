@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { saveReferralPartner } from '../services/firestore';
+import { saveReferralPartner } from '../services/storage';
 import { askReferralAssistant } from '../services/gemini';
 import toast from 'react-hot-toast';
 

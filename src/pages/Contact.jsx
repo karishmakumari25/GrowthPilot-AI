@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { saveContactForm } from '../services/firestore';
+import { saveContactForm } from '../services/storage';
 import toast from 'react-hot-toast';
 
 const INITIAL = { name:'', phone:'', email:'', business:'', message:'' };

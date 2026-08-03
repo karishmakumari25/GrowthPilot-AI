@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { analyzeCompetitor } from '../services/gemini';
-import { saveCompetitorReport } from '../services/firestore';
+import { saveCompetitorReport } from '../services/storage';
 import toast from 'react-hot-toast';
 
 const INITIAL = { myBusiness:'', competitorName:'', competitorWebsite:'', location:'', industry:'' };

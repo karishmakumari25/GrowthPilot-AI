@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { analyzeBusiness } from '../services/gemini';
-import { saveAnalysisReport } from '../services/firestore';
+import { saveAnalysisReport } from '../services/storage';
 import toast from 'react-hot-toast';
 
 const INITIAL = { businessName:'', ownerName:'', businessType:'', city:'', website:'', monthlySales:'', problems:'', marketingMethods:'', targetCustomers:'', goals:'' };

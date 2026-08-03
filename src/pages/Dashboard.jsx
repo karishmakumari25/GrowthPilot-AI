@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { getUserReports, getUserCompetitorReports, saveUserProfile } from '../services/firestore';
+import { getUserReports, getUserCompetitorReports, saveUserProfile } from '../services/storage';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 import toast from 'react-hot-toast';
 

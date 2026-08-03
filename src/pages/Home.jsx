@@ -58,7 +58,7 @@ const TESTIMONIALS = [
 /* ── FAQ data ────────────────────────────────────────────── */
 const FAQS = [
   { q: 'How does the AI analysis work?', a: 'We use Google Gemini AI to analyze your business details, market position, and competition. The AI generates a comprehensive report with scores, recommendations, and an action plan.' },
-  { q: 'Is my business data secure?', a: 'Yes. All data is encrypted and stored securely in Firebase. We never share your business information with third parties.' },
+  { q: 'Is my business data secure?', a: 'Yes. All data is encrypted and stored securely with industry-standard privacy protections. We never share your business information with third parties.' },
   { q: 'How accurate are the AI recommendations?', a: 'Our AI is trained on millions of business data points and provides industry-specific insights with 85-95% relevance for most business types.' },
   { q: 'Can I download my analysis report?', a: 'Yes! Every analysis generates a professional PDF report you can download, share with your team, or present to investors.' },
   { q: 'How does the referral program work?', a: 'Refer any business to GrowthPilot AI. When they sign up for a paid plan, you earn ₹1000 instantly. No cap, no qualification required.' },
@@ -270,8 +270,8 @@ export default function Home() {
             </div>
             {[
               { title: 'Platform', links: [['AI Analyzer', '/ai-analyzer'], ['Competitor Analysis', '/competitor-analysis'], ['Pricing', '/pricing'], ['Dashboard', '/dashboard']] },
-              { title: 'Company',  links: [['About', '/about'], ['Contact', '/contact'], ['Referral Program', '/referral-program'], ['Privacy Policy', '#']] },
-              { title: 'Support',  links: [['Documentation', '#'], ['WhatsApp Support', '#'], ['Email Us', '#'], ['FAQ', '#']] },
+              { title: 'Company', links: [['About', '/about'], ['Contact', '/contact'], ['Referral Program', '/referral-program'], ['Privacy Policy', '#']] },
+              { title: 'Support', links: [['Documentation', '#'], ['WhatsApp Support', '#'], ['Email Us', '#'], ['FAQ', '#']] },
             ].map(col => (
               <div key={col.title}>
                 <h4 style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>{col.title}</h4>
