@@ -2,405 +2,1846 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
-        @layer base {
-            html, body {
-                margin: 0;
-                padding: 0;
-            }
-            body {
-                overscroll-behavior: none;
-                background-color: #081425;
-            }
-            main > :first-child {
-                margin-top: 0 !important;
-            }
-            main > :last-child {
-                margin-bottom: 0 !important;
-            }
-        }
-        ::-webkit-scrollbar {
-            display: none;
-        }
-    </style>
+  @layer base {
+    html, body { margin: 0; padding: 0; }
+    body { overscroll-behavior: none; background-color: #081425; }
+    main > :first-child { margin-top: 0 !important; }
+    main > :last-child { margin-bottom: 0 !important; }
+  }
+  ::-webkit-scrollbar { display: none; }
+  .page-section { display: none; }
+  .page-section.active { display: block; }
+</style>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "on-tertiary": "#00344a",
-                        "secondary-fixed": "#6ffbbe",
-                        "on-tertiary-container": "#004966",
-                        "on-primary-fixed-variant": "#653e00",
-                        "on-background": "#d8e3fb",
-                        "on-surface": "#d8e3fb",
-                        "on-primary-container": "#613b00",
-                        "on-primary": "#472a00",
-                        "surface-bright": "#2f3a4c",
-                        "tertiary-container": "#1abdff",
-                        "on-secondary-fixed-variant": "#005236",
-                        "secondary-container": "#00a572",
-                        "primary": "#ffc174",
-                        "on-secondary": "#003824",
-                        "surface-container": "#152031",
-                        "tertiary-fixed": "#c5e7ff",
-                        "on-secondary-fixed-variant": "#005236",
-                        "surface-variant": "#2a3548",
-                        "inverse-primary": "#855300",
-                        "outline-variant": "#534434",
-                        "surface": "#081425",
-                        "secondary-fixed-dim": "#4edea3",
-                        "on-secondary-fixed": "#002113",
-                        "on-error": "#690005",
-                        "error-container": "#93000a",
-                        "on-tertiary-fixed": "#001e2d",
-                        "surface-tint": "#ffb95f",
-                        "tertiary-fixed-dim": "#7fd0ff",
-                        "primary-fixed-dim": "#ffb95f",
-                        "surface-dim": "#081425",
-                        "primary-fixed": "#ffddb8",
-                        "tertiary": "#8fd5ff",
-                        "inverse-on-surface": "#263143",
-                        "on-error-container": "#ffdad6",
-                        "on-tertiary-fixed-variant": "#004c6a",
-                        "surface-container-high": "#1f2a3c",
-                        "primary-container": "#f59e0b",
-                        "secondary": "#4edea3",
-                        "surface-container-highest": "#2a3548",
-                        "surface-container-lowest": "#040e1f",
-                        "on-surface-variant": "#d8c3ad",
-                        "on-primary-fixed": "#2a1700",
-                        "background": "#081425",
-                        "inverse-surface": "#d8e3fb",
-                        "error": "#ffb4ab",
-                        "surface-container-low": "#111c2d",
-                        "outline": "#a08e7a",
-                        "on-secondary-container": "#00311f"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.125rem",
-                        "lg": "0.25rem",
-                        "xl": "0.5rem",
-                        "full": "0.75rem"
-                    },
-                    "spacing": {
-                        "gutter": "24px",
-                        "margin-desktop": "48px",
-                        "unit": "4px",
-                        "container-max": "1440px",
-                        "margin-mobile": "16px"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Hanken Grotesk"],
-                        "body-lg": ["Hanken Grotesk"],
-                        "headline-xl": ["Hanken Grotesk"],
-                        "body-md": ["Hanken Grotesk"],
-                        "headline-md": ["Hanken Grotesk"],
-                        "headline-lg-mobile": ["Hanken Grotesk"],
-                        "label-md": ["Hanken Grotesk"],
-                        "label-sm": ["Hanken Grotesk"]
-                    },
-                    "fontSize": {
-                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
-                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
-                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
-                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}]
-                    }
-                },
-            },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-tertiary": "#00344a","secondary-fixed": "#6ffbbe","on-tertiary-container": "#004966",
+          "on-primary-fixed-variant": "#653e00","on-background": "#d8e3fb","on-surface": "#d8e3fb",
+          "on-primary-container": "#613b00","on-primary": "#472a00","surface-bright": "#2f3a4c",
+          "tertiary-container": "#1abdff","on-secondary-fixed-variant": "#005236",
+          "secondary-container": "#00a572","primary": "#ffc174","on-secondary": "#003824",
+          "surface-container": "#152031","tertiary-fixed": "#c5e7ff","surface-variant": "#2a3548",
+          "inverse-primary": "#855300","outline-variant": "#534434","surface": "#081425",
+          "secondary-fixed-dim": "#4edea3","on-secondary-fixed": "#002113","on-error": "#690005",
+          "error-container": "#93000a","on-tertiary-fixed": "#001e2d","surface-tint": "#ffb95f",
+          "tertiary-fixed-dim": "#7fd0ff","primary-fixed-dim": "#ffb95f","surface-dim": "#081425",
+          "primary-fixed": "#ffddb8","tertiary": "#8fd5ff","inverse-on-surface": "#263143",
+          "on-error-container": "#ffdad6","on-tertiary-fixed-variant": "#004c6a",
+          "surface-container-high": "#1f2a3c","primary-container": "#f59e0b","secondary": "#4edea3",
+          "surface-container-highest": "#2a3548","surface-container-lowest": "#040e1f",
+          "on-surface-variant": "#d8c3ad","on-primary-fixed": "#2a1700","background": "#081425",
+          "inverse-surface": "#d8e3fb","error": "#ffb4ab","surface-container-low": "#111c2d",
+          "outline": "#a08e7a","on-secondary-container": "#00311f"
+        },
+        "borderRadius": { "DEFAULT": "0.125rem","lg": "0.25rem","xl": "0.5rem","full": "0.75rem" },
+        "spacing": { "gutter": "24px","margin-desktop": "48px","unit": "4px","container-max": "1440px","margin-mobile": "16px" },
+        "fontFamily": { "headline-lg": ["Hanken Grotesk"],"body-lg": ["Hanken Grotesk"],"headline-xl": ["Hanken Grotesk"],"body-md": ["Hanken Grotesk"],"headline-md": ["Hanken Grotesk"],"headline-lg-mobile": ["Hanken Grotesk"],"label-md": ["Hanken Grotesk"],"label-sm": ["Hanken Grotesk"] },
+        "fontSize": {
+          "headline-lg": ["32px", {"lineHeight": "40px","letterSpacing": "-0.01em","fontWeight": "600"}],
+          "body-lg": ["18px", {"lineHeight": "28px","fontWeight": "400"}],
+          "headline-xl": ["48px", {"lineHeight": "56px","letterSpacing": "-0.02em","fontWeight": "700"}],
+          "body-md": ["16px", {"lineHeight": "24px","fontWeight": "400"}],
+          "headline-md": ["24px", {"lineHeight": "32px","fontWeight": "600"}],
+          "headline-lg-mobile": ["28px", {"lineHeight": "36px","fontWeight": "600"}],
+          "label-md": ["14px", {"lineHeight": "20px","letterSpacing": "0.01em","fontWeight": "500"}],
+          "label-sm": ["12px", {"lineHeight": "16px","fontWeight": "600"}]
         }
-    </script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+      }
+    }
+  }
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&display=swap" rel="stylesheet"/>
 </head>
 <body class="bg-surface font-body-md text-on-surface antialiased">
-<header class="fixed top-0 w-full z-50 bg-surface-dim/90 backdrop-blur-md border-b border-outline-variant/20">
-<div class="h-16 w-full px-gutter flex items-center justify-between max-w-7xl mx-auto">
-<div class="flex items-center gap-8">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 bg-primary-container flex items-center justify-center rounded">
-<span class="material-symbols-outlined text-on-primary-container text-[20px]">rocket_launch</span>
-</div>
-<span class="font-headline-md text-xl text-on-surface tracking-tight">GrowthPilot AI</span>
-</div>
-<nav class="hidden lg:flex items-center gap-gutter ml-8">
-<a aria-current="page" class="text-sm font-medium transition-colors text-primary-container" href="#">Home</a>
-<a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors" href="#">Solutions</a>
-<a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors" href="#">Platform</a>
-<a class="text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors" href="#">Pricing</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<a class="text-sm font-medium text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors" href="#">Log In</a>
-<button class="bg-primary-container text-on-primary-container text-sm font-semibold px-6 py-2 rounded-xl hover:brightness-110 transition-all">Get Started</button>
-</div>
-</div>
-</header>
-<main class="w-full pt-16 min-h-screen">
-<div class="flex flex-col w-full">
-<!-- Hero Section -->
-<section class="relative min-h-[85vh] flex flex-col justify-center items-center px-gutter overflow-hidden bg-surface-dim">
-<!-- Clean High-Contrast Grid Overlay -->
-<div class="absolute inset-0 opacity-[0.1] pointer-events-none">
-<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="60" id="hero-grid" patternunits="userSpaceOnUse" width="60">
-<path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path>
-</pattern>
-</defs>
-<rect fill="url(#hero-grid)" height="100%" width="100%"></rect>
-</svg>
-</div>
-<div class="absolute inset-0 bg-gradient-to-b from-surface-dim/0 via-surface-dim/50 to-surface-dim pointer-events-none"></div>
-<div class="relative z-10 max-w-4xl w-full text-center flex flex-col items-center">
-<div class="mb-gutter px-4 py-1.5 rounded-full bg-primary-container/10 border border-primary-container/30 inline-flex items-center gap-2">
-<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
-<span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em]">Engine v2.4 Live</span>
-</div>
-<h1 class="font-headline-xl text-display-lg text-on-surface mb-6 max-w-4xl leading-[1.1] tracking-tight">
-                        Scale Your Enterprise with <span class="text-primary-container">Precision Intelligence</span>
-</h1>
-<p class="font-body-lg text-on-surface-variant mb-10 max-w-2xl">
-                        The complete growth engine for ambitious teams. Harness the power of neural market analysis to outpace competition and automate expansion with structural certainty.
-                    </p>
-<div class="flex flex-col sm:flex-row items-center gap-4">
-<button class="px-10 py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 shadow-xl shadow-primary-container/10">
-                            Start Free Trial
-                        </button>
-<button class="px-10 py-3.5 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all duration-200 flex items-center gap-2">
-<span class="material-symbols-outlined text-[20px]">play_circle</span>
-                            Watch Demo
-                        </button>
-</div>
-</div>
-</section>
-<!-- Trusted By -->
-<section class="py-12 bg-surface-container-lowest border-y border-outline-variant/10">
-<div class="px-gutter mx-auto max-w-7xl">
-<p class="text-center text-[10px] font-bold text-outline uppercase tracking-[0.3em] mb-10">Powering Global Infrastructure</p>
-<div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-<div class="h-6 w-32 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">ENTERPRISE_PARTNER_A</div>
-<div class="h-6 w-28 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">CORP_TECH_B</div>
-<div class="h-6 w-36 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">GLOBAL_SYS_C</div>
-<div class="h-6 w-32 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">INFRA_STRUC_D</div>
-<div class="h-6 w-30 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">CLOUD_MOD_E</div>
-</div>
-</div>
-</section>
-<!-- Core Capabilities -->
-<section class="py-24 px-gutter bg-surface">
-<div class="max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row items-baseline justify-between mb-16 gap-8">
-<div class="max-w-xl">
-<span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-3">Architecture</span>
-<h2 class="font-headline-lg text-on-surface">Built for Structural Dominance</h2>
-</div>
-<p class="font-body-md text-on-surface-variant max-w-sm">
-                            GrowthPilot AI bypasses surface-level metrics to analyze the structural DNA of your market.
-                        </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-<!-- Cap 1 -->
-<div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
-<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-[26px]">analytics</span>
-</div>
-<h3 class="font-headline-md text-lg text-on-surface mb-3">Market Diagnostics</h3>
-<p class="font-body-md text-on-surface-variant">
-                                Identify hidden market inefficiencies and expansion vectors with sub-second neural processing.
-                            </p>
-</div>
-<!-- Cap 2 -->
-<div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
-<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-[26px]">hub</span>
-</div>
-<h3 class="font-headline-md text-lg text-on-surface mb-3">Performance Nodes</h3>
-<p class="font-body-md text-on-surface-variant">
-                                Map and optimize every touchpoint in your sales cycle through automated algorithmic tuning.
-                            </p>
-</div>
-<!-- Cap 3 -->
-<div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
-<div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined text-[26px]">shield_with_heart</span>
-</div>
-<h3 class="font-headline-md text-lg text-on-surface mb-3">Competitor Edge</h3>
-<p class="font-body-md text-on-surface-variant">
-                                Anticipate market shifts before they occur with predictive structural modeling of competitor trajectories.
-                            </p>
-</div>
-</div>
-</div>
-</section>
-<!-- Roadmap to Scale -->
-<section class="py-24 px-gutter bg-surface-container-lowest overflow-hidden border-y border-outline-variant/10">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="font-headline-lg text-on-surface mb-4">The Roadmap to Scale</h2>
-<p class="font-body-md text-on-surface-variant max-w-xl mx-auto">A rigorous, four-phase implementation cycle designed for enterprise reliability.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-<div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
-<span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 01</span>
-<h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Ingestion</h4>
-<p class="font-body-md text-on-surface-variant text-sm">Secure sync of all historical and real-time enterprise data streams.</p>
-</div>
-<div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
-<span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 02</span>
-<h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Analysis</h4>
-<p class="font-body-md text-on-surface-variant text-sm">Neural identification of growth bottlenecks and structural outliers.</p>
-</div>
-<div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
-<span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 03</span>
-<h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Simulation</h4>
-<p class="font-body-md text-on-surface-variant text-sm">Stress-testing expansion scenarios in a high-fidelity digital twin.</p>
-</div>
-<div class="flex flex-col gap-4 p-6 border-l-2 border-primary-container transition-colors group">
-<span class="text-xs font-bold text-primary-container">STEP 04</span>
-<h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Execution</h4>
-<p class="font-body-md text-on-surface-variant text-sm">Automated deployment of optimized growth strategies across channels.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Architectural Visual Split -->
-<section class="grid grid-cols-1 md:grid-cols-2 bg-surface min-h-[600px]">
-<div class="p-20 flex flex-col justify-center">
-<h2 class="font-headline-lg text-on-surface mb-12">Engineered for Reliability</h2>
-<div class="space-y-10">
-<div class="flex gap-6">
-<div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded">
-<span class="material-symbols-outlined text-[22px]">verified</span>
-</div>
-<div>
-<p class="text-base font-bold text-on-surface mb-2">SOC2 Type II Certified</p>
-<p class="font-body-md text-on-surface-variant">Enterprise-grade security at every layer of the intelligence stack.</p>
-</div>
-</div>
-<div class="flex gap-6">
-<div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded">
-<span class="material-symbols-outlined text-[22px]">integration_instructions</span>
-</div>
-<div>
-<p class="text-base font-bold text-on-surface mb-2">Seamless ERP Integration</p>
-<p class="font-body-md text-on-surface-variant">Connect with SAP, Oracle, and Salesforce in minutes, not months.</p>
-</div>
-</div>
-<div class="flex gap-6">
-<div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded">
-<span class="material-symbols-outlined text-[22px]">query_stats</span>
-</div>
-<div>
-<p class="text-base font-bold text-on-surface mb-2">Explainable AI (XAI)</p>
-<p class="font-body-md text-on-surface-variant">Every recommendation includes a full audit trail of causal logic.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="relative bg-surface-container-lowest p-20 flex items-center justify-center border-l border-outline-variant/10 overflow-hidden">
-<!-- High-Contrast Grid Overlay for right split -->
-<div class="absolute inset-0 opacity-[0.03] pointer-events-none">
-<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<pattern height="40" id="visual-grid" patternunits="userSpaceOnUse" width="40">
-<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffc174" stroke-width="1"></path>
-</pattern>
-</defs>
-<rect fill="url(#visual-grid)" height="100%" width="100%"></rect>
-</svg>
-</div>
-<!-- Tech Mockup UI -->
-<div class="relative w-full max-w-md aspect-[4/3] bg-surface-dim border border-outline-variant/30 rounded-xl shadow-2xl p-8 flex flex-col gap-6 transform hover:scale-[1.02] transition-transform duration-500">
-<div class="flex justify-between items-center">
-<div class="h-2.5 w-24 bg-outline-variant/30 rounded-full"></div>
-<div class="h-2.5 w-12 bg-primary-container/40 rounded-full"></div>
-</div>
-<div class="flex-1 flex items-end gap-3">
-<div class="w-full bg-outline-variant/20 rounded-t" style="height: 35%"></div>
-<div class="w-full bg-primary-container/30 rounded-t" style="height: 60%"></div>
-<div class="w-full bg-primary-container rounded-t shadow-[0_0_20px_rgba(245,158,11,0.3)]" style="height: 85%"></div>
-<div class="w-full bg-outline-variant/30 rounded-t" style="height: 45%"></div>
-<div class="w-full bg-primary-container/60 rounded-t" style="height: 75%"></div>
-</div>
-<div class="grid grid-cols-2 gap-4 mt-4">
-<div class="h-12 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center px-4">
-<div class="w-16 h-1.5 bg-outline-variant/40 rounded-full"></div>
-</div>
-<div class="h-12 bg-surface-container rounded-lg border border-outline-variant/20 flex items-center px-4">
-<div class="w-12 h-1.5 bg-primary-container/40 rounded-full"></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Closing CTA -->
-<section class="py-32 px-gutter bg-surface-dim border-t border-outline-variant/10 relative overflow-hidden">
-<!-- Decorative Amber Glow -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-[120px] pointer-events-none"></div>
-<div class="max-w-4xl mx-auto text-center relative z-10">
-<h2 class="font-headline-xl text-on-surface mb-8">Ready to outpace the market?</h2>
-<p class="font-body-lg text-on-surface-variant mb-12">
-                        Join the fleet of high-growth enterprises leveraging precision intelligence to dominate their industries.
-                    </p>
-<div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-<button class="px-12 py-4 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 shadow-2xl shadow-primary-container/20">
-                            Get Started Now
-                        </button>
-<button class="px-12 py-4 text-on-surface font-bold border border-outline-variant/40 rounded-xl hover:bg-surface-container transition-all">
-                            Talk to an Expert
-                        </button>
-</div>
-</div>
-</section>
-</div>
-</main>
-<footer class="w-full bg-surface-dim border-t border-outline-variant/10 py-16">
-<div class="max-w-7xl mx-auto px-gutter grid grid-cols-1 md:grid-cols-4 gap-12">
-<div class="col-span-1">
-<div class="flex items-center gap-2 mb-6">
-<div class="w-6 h-6 bg-primary-container flex items-center justify-center rounded">
-<span class="material-symbols-outlined text-on-primary-container text-[14px]">rocket_launch</span>
-</div>
-<span class="font-bold text-on-surface text-base tracking-tight">GrowthPilot AI</span>
-</div>
-<p class="text-on-surface-variant text-sm leading-relaxed">Scale your enterprise with structural precision and AI-driven insights.</p>
-</div>
-<div class="col-span-1 md:col-span-3 flex justify-end gap-16">
-<div class="flex flex-col gap-4">
-<span class="text-on-surface text-[10px] font-bold uppercase tracking-widest">Product</span>
-<a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors" href="#">Features</a>
-<a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors" href="#">API</a>
-</div>
-<div class="flex flex-col gap-4">
-<span class="text-on-surface text-[10px] font-bold uppercase tracking-widest">Company</span>
-<a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors" href="#">About</a>
-<a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors" href="#">Legal</a>
-</div>
-</div>
-</div>
-<div class="max-w-7xl mx-auto px-gutter mt-16 pt-8 border-t border-outline-variant/5">
-<p class="text-[10px] text-outline text-center">© 2024 GROWTHPILOT AI INC. STRUCTURAL PRECISION MANDATED.</p>
-</div>
-</footer>
-<script>
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100');
-                    entry.target.classList.remove('opacity-0', 'translate-y-6');
-                }
-            });
-        }, { threshold: 0.1 });
 
-        document.querySelectorAll('section > div').forEach(el => {
-            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-6', 'ease-out');
-            observer.observe(el);
-        });
-    </script>
+<!-- NAVBAR -->
+<header class="fixed top-0 w-full z-50 bg-surface-dim/90 backdrop-blur-md border-b border-outline-variant/20">
+  <div class="h-16 w-full px-gutter flex items-center justify-between max-w-7xl mx-auto">
+    <div class="flex items-center gap-8">
+      <div class="flex items-center gap-2 cursor-pointer" onclick="navigate('home')">
+        <div class="w-8 h-8 bg-primary-container flex items-center justify-center rounded">
+          <span class="material-symbols-outlined text-on-primary-container text-[20px]">rocket_launch</span>
+        </div>
+        <span class="font-headline-md text-xl text-on-surface tracking-tight">GrowthPilot AI</span>
+      </div>
+      <nav class="hidden lg:flex items-center gap-gutter ml-8">
+        <a id="nav-home" class="nav-link text-sm font-medium transition-colors text-primary-container cursor-pointer" onclick="navigate('home')">Home</a>
+        <a id="nav-solutions" class="nav-link text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="navigate('solutions')">Solutions</a>
+        <a id="nav-platform" class="nav-link text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="navigate('platform')">Platform</a>
+        <a id="nav-pricing" class="nav-link text-sm font-medium text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer" onclick="navigate('pricing')">Pricing</a>
+      </nav>
+    </div>
+    <div class="flex items-center gap-4">
+      <a id="nav-login-btn" class="text-sm font-medium text-on-surface-variant px-4 py-2 hover:text-on-surface transition-colors cursor-pointer" onclick="navigate('login')">Log In</a>
+      <button onclick="navigate('signup')" class="bg-primary-container text-on-primary-container text-sm font-semibold px-6 py-2 rounded-xl hover:brightness-110 transition-all">Get Started</button>
+    </div>
+  </div>
+</header>
+
+<main class="w-full pt-16 min-h-screen">
+
+<!-- ==================== HOME PAGE ==================== -->
+<div id="page-home" class="page-section active">
+  <div class="flex flex-col w-full">
+    <!-- Hero -->
+    <section class="relative min-h-[85vh] flex flex-col justify-center items-center px-gutter overflow-hidden bg-surface-dim">
+      <div class="absolute inset-0 opacity-[0.1] pointer-events-none">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern height="60" id="hero-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+          <rect fill="url(#hero-grid)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-surface-dim/0 via-surface-dim/50 to-surface-dim pointer-events-none"></div>
+      <div class="relative z-10 max-w-4xl w-full text-center flex flex-col items-center">
+        <div class="mb-gutter px-4 py-1.5 rounded-full bg-primary-container/10 border border-primary-container/30 inline-flex items-center gap-2">
+          <!-- triple ring live pulse -->
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-60"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-container"></span>
+          </span>
+          <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em]">Engine v2.4 Live</span>
+          <span id="live-tick" class="text-[10px] text-primary-container/60 font-mono ml-1">00:00:00</span>
+        </div>
+        <!-- Live Stats Bar -->
+        <div class="flex items-center gap-6 mb-6 text-[11px] text-on-surface-variant flex-wrap justify-center">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+            <span id="stat-users" class="font-mono font-bold text-on-surface">0</span> users online
+          </span>
+          <span class="text-outline-variant/40">·</span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+            <span id="stat-analyses" class="font-mono font-bold text-on-surface">0</span> analyses running
+          </span>
+          <span class="text-outline-variant/40">·</span>
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+            <span id="stat-revenue" class="font-mono font-bold text-on-surface">$0</span> revenue tracked today
+          </span>
+        </div>
+        <h1 class="font-headline-xl text-display-lg text-on-surface mb-6 max-w-4xl leading-[1.1] tracking-tight">
+          Scale Your Enterprise with <span class="text-primary-container">Precision Intelligence</span>
+        </h1>
+        <p class="font-body-lg text-on-surface-variant mb-10 max-w-2xl">
+          The complete growth engine for ambitious teams. Harness the power of neural market analysis to outpace competition and automate expansion with structural certainty.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <button onclick="navigate('signup')" class="px-10 py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 shadow-xl shadow-primary-container/10">Start Free Trial</button>
+          <button onclick="openDemoModal()" class="px-10 py-3.5 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all duration-200 flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px]">play_circle</span> Watch Demo
+          </button>
+        </div>
+      </div>
+    </section>
+    <!-- Trusted By -->
+    <section class="py-12 bg-surface-container-lowest border-y border-outline-variant/10">
+      <div class="px-gutter mx-auto max-w-7xl">
+        <p class="text-center text-[10px] font-bold text-outline uppercase tracking-[0.3em] mb-10">Powering Global Infrastructure</p>
+        <div class="flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+          <div class="h-6 w-32 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">ENTERPRISE_PARTNER_A</div>
+          <div class="h-6 w-28 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">CORP_TECH_B</div>
+          <div class="h-6 w-36 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">GLOBAL_SYS_C</div>
+          <div class="h-6 w-32 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">INFRA_STRUC_D</div>
+          <div class="h-6 w-30 border border-outline-variant/30 rounded flex items-center justify-center text-[10px] text-outline font-bold">CLOUD_MOD_E</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Capabilities -->
+    <section class="py-24 px-gutter bg-surface">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-baseline justify-between mb-16 gap-8">
+          <div class="max-w-xl">
+            <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-3">Architecture</span>
+            <h2 class="font-headline-lg text-on-surface">Built for Structural Dominance</h2>
+          </div>
+          <p class="font-body-md text-on-surface-variant max-w-sm">GrowthPilot AI bypasses surface-level metrics to analyze the structural DNA of your market.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[26px]">analytics</span>
+            </div>
+            <h3 class="font-headline-md text-lg text-on-surface mb-3">Market Diagnostics</h3>
+            <p class="font-body-md text-on-surface-variant">Identify hidden market inefficiencies and expansion vectors with sub-second neural processing.</p>
+          </div>
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[26px]">hub</span>
+            </div>
+            <h3 class="font-headline-md text-lg text-on-surface mb-3">Performance Nodes</h3>
+            <p class="font-body-md text-on-surface-variant">Map and optimize every touchpoint in your sales cycle through automated algorithmic tuning.</p>
+          </div>
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-lg mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[26px]">shield_with_heart</span>
+            </div>
+            <h3 class="font-headline-md text-lg text-on-surface mb-3">Competitor Edge</h3>
+            <p class="font-body-md text-on-surface-variant">Anticipate market shifts before they occur with predictive structural modeling of competitor trajectories.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Roadmap -->
+    <section class="py-24 px-gutter bg-surface-container-lowest overflow-hidden border-y border-outline-variant/10">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <h2 class="font-headline-lg text-on-surface mb-4">The Roadmap to Scale</h2>
+          <p class="font-body-md text-on-surface-variant max-w-xl mx-auto">A rigorous, four-phase implementation cycle designed for enterprise reliability.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
+            <span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 01</span>
+            <h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Ingestion</h4>
+            <p class="font-body-md text-on-surface-variant text-sm">Secure sync of all historical and real-time enterprise data streams.</p>
+          </div>
+          <div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
+            <span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 02</span>
+            <h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Analysis</h4>
+            <p class="font-body-md text-on-surface-variant text-sm">Neural identification of growth bottlenecks and structural outliers.</p>
+          </div>
+          <div class="flex flex-col gap-4 p-6 border-l-2 border-outline-variant/20 hover:border-primary-container transition-colors group">
+            <span class="text-xs font-bold text-primary-container opacity-60 group-hover:opacity-100">STEP 03</span>
+            <h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Simulation</h4>
+            <p class="font-body-md text-on-surface-variant text-sm">Stress-testing expansion scenarios in a high-fidelity digital twin.</p>
+          </div>
+          <div class="flex flex-col gap-4 p-6 border-l-2 border-primary-container transition-colors group">
+            <span class="text-xs font-bold text-primary-container">STEP 04</span>
+            <h4 class="font-bold text-on-surface text-sm uppercase tracking-wider">Execution</h4>
+            <p class="font-body-md text-on-surface-variant text-sm">Automated deployment of optimized growth strategies across channels.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reliability Split -->
+    <section class="grid grid-cols-1 md:grid-cols-2 bg-surface min-h-[600px]">
+      <div class="p-20 flex flex-col justify-center">
+        <h2 class="font-headline-lg text-on-surface mb-12">Engineered for Reliability</h2>
+        <div class="space-y-10">
+          <div class="flex gap-6">
+            <div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded"><span class="material-symbols-outlined text-[22px]">verified</span></div>
+            <div><p class="text-base font-bold text-on-surface mb-2">SOC2 Type II Certified</p><p class="font-body-md text-on-surface-variant">Enterprise-grade security at every layer of the intelligence stack.</p></div>
+          </div>
+          <div class="flex gap-6">
+            <div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded"><span class="material-symbols-outlined text-[22px]">integration_instructions</span></div>
+            <div><p class="text-base font-bold text-on-surface mb-2">Seamless ERP Integration</p><p class="font-body-md text-on-surface-variant">Connect with SAP, Oracle, and Salesforce in minutes, not months.</p></div>
+          </div>
+          <div class="flex gap-6">
+            <div class="mt-1 w-8 h-8 flex items-center justify-center text-primary-container bg-primary-container/10 rounded"><span class="material-symbols-outlined text-[22px]">query_stats</span></div>
+            <div><p class="text-base font-bold text-on-surface mb-2">Explainable AI (XAI)</p><p class="font-body-md text-on-surface-variant">Every recommendation includes a full audit trail of causal logic.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Improved Dashboard Mockup -->
+      <div class="relative bg-surface-container-lowest p-10 flex items-center justify-center border-l border-outline-variant/10 overflow-hidden">
+        <!-- Ambient glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary-container/8 rounded-full blur-[80px] pointer-events-none"></div>
+        <div class="relative w-full max-w-sm bg-surface-dim border border-outline-variant/25 rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-transform duration-500">
+          <!-- Window chrome -->
+          <div class="flex items-center justify-between px-4 py-3 bg-surface-container border-b border-outline-variant/20">
+            <div class="flex items-center gap-1.5">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-500/60"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/60"></div>
+              <div class="w-2.5 h-2.5 rounded-full bg-green-500/60"></div>
+            </div>
+            <div class="flex items-center gap-1.5 px-3 py-1 bg-surface rounded-full border border-outline-variant/20">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+              <span class="text-[10px] text-primary-container font-bold">LIVE</span>
+            </div>
+            <div class="w-16 h-2 bg-outline-variant/20 rounded-full"></div>
+          </div>
+          <!-- Dashboard body -->
+          <div class="p-5 flex flex-col gap-4">
+            <!-- KPI row -->
+            <div class="grid grid-cols-3 gap-3">
+              <div class="bg-surface-container rounded-xl p-3 border border-outline-variant/15">
+                <p class="text-[9px] text-on-surface-variant uppercase tracking-wider mb-1.5">Revenue</p>
+                <p class="text-sm font-bold text-on-surface">$48.2K</p>
+                <p class="text-[9px] text-green-400 flex items-center gap-0.5 mt-1">
+                  <span>▲</span> 12.4%
+                </p>
+              </div>
+              <div class="bg-surface-container rounded-xl p-3 border border-outline-variant/15">
+                <p class="text-[9px] text-on-surface-variant uppercase tracking-wider mb-1.5">Leads</p>
+                <p class="text-sm font-bold text-on-surface">1,284</p>
+                <p class="text-[9px] text-green-400 flex items-center gap-0.5 mt-1">
+                  <span>▲</span> 8.1%
+                </p>
+              </div>
+              <div class="bg-surface-container rounded-xl p-3 border border-primary-container/25 bg-primary-container/5">
+                <p class="text-[9px] text-on-surface-variant uppercase tracking-wider mb-1.5">Churn</p>
+                <p class="text-sm font-bold text-on-surface">1.2%</p>
+                <p class="text-[9px] text-green-400 flex items-center gap-0.5 mt-1">
+                  <span>▼</span> 0.5%
+                </p>
+              </div>
+            </div>
+            <!-- Chart -->
+            <div class="bg-surface-container rounded-xl p-4 border border-outline-variant/15">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-[10px] font-semibold text-on-surface">Revenue Overview</p>
+                <span class="text-[9px] text-primary-container font-bold px-2 py-0.5 bg-primary-container/10 rounded-full">+12.4%</span>
+              </div>
+              <div class="flex items-end gap-2 h-20">
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-outline-variant/20 rounded-t hover:bg-outline-variant/40 transition-colors" style="height:45%"></div>
+                  <span class="text-[8px] text-on-surface-variant">Feb</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-primary-container/25 rounded-t hover:bg-primary-container/40 transition-colors" style="height:60%"></div>
+                  <span class="text-[8px] text-on-surface-variant">Mar</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-outline-variant/20 rounded-t hover:bg-outline-variant/40 transition-colors" style="height:40%"></div>
+                  <span class="text-[8px] text-on-surface-variant">Apr</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-primary-container/40 rounded-t hover:bg-primary-container/60 transition-colors" style="height:72%"></div>
+                  <span class="text-[8px] text-on-surface-variant">May</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-primary-container/55 rounded-t hover:bg-primary-container/70 transition-colors" style="height:83%"></div>
+                  <span class="text-[8px] text-on-surface-variant">Jun</span>
+                </div>
+                <div class="flex flex-col items-center gap-1 flex-1">
+                  <div class="w-full bg-primary-container rounded-t shadow-[0_0_12px_rgba(245,158,11,0.5)]" style="height:100%"></div>
+                  <span class="text-[8px] text-primary-container font-bold">Jul</span>
+                </div>
+              </div>
+            </div>
+            <!-- AI Insight chip -->
+            <div class="flex items-center gap-3 p-3 bg-surface-container rounded-xl border border-primary-container/20">
+              <div class="w-7 h-7 rounded-lg bg-primary-container/15 flex items-center justify-center flex-shrink-0">
+                <span class="material-symbols-outlined text-primary-container text-[15px]">psychology</span>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-[10px] font-semibold text-on-surface">🚀 23 upsell opportunities detected</p>
+                <p class="text-[9px] text-on-surface-variant truncate">High expansion signal — act now</p>
+              </div>
+              <span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse flex-shrink-0"></span>
+            </div>
+            <!-- Activity items -->
+            <div class="space-y-2">
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-green-500/15 flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-green-400 text-[11px]">check_circle</span>
+                </div>
+                <div class="flex-1"><p class="text-[10px] text-on-surface font-medium">Deal closed — Acme Corp</p></div>
+                <span class="text-[9px] text-on-surface-variant">2h ago</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-primary-container/15 flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-primary-container text-[11px]">person_add</span>
+                </div>
+                <div class="flex-1"><p class="text-[10px] text-on-surface font-medium">New lead — TechFlow Inc.</p></div>
+                <span class="text-[9px] text-on-surface-variant">5h ago</span>
+              </div>
+              <div class="flex items-center gap-2.5">
+                <div class="w-5 h-5 rounded-full bg-red-500/15 flex items-center justify-center flex-shrink-0">
+                  <span class="material-symbols-outlined text-red-400 text-[11px]">warning</span>
+                </div>
+                <div class="flex-1"><p class="text-[10px] text-on-surface font-medium">Churn alert — Zephyr Labs</p></div>
+                <span class="text-[9px] text-on-surface-variant">1d ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA -->
+    <section class="py-32 px-gutter bg-surface-dim border-t border-outline-variant/10 relative overflow-hidden">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary-container/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <h2 class="font-headline-xl text-on-surface mb-8">Ready to outpace the market?</h2>
+        <p class="font-body-lg text-on-surface-variant mb-12">Join the fleet of high-growth enterprises leveraging precision intelligence to dominate their industries.</p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+          <button onclick="navigate('signup')" class="px-12 py-4 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 shadow-2xl shadow-primary-container/20">Get Started Now</button>
+          <button class="px-12 py-4 text-on-surface font-bold border border-outline-variant/40 rounded-xl hover:bg-surface-container transition-all" onclick="openExpertModal()">Talk to an Expert</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ==================== SOLUTIONS PAGE ==================== -->
+<div id="page-solutions" class="page-section">
+  <div class="flex flex-col w-full">
+    <section class="relative py-24 px-gutter bg-surface-dim overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern height="60" id="sol-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+          <rect fill="url(#sol-grid)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-4">Solutions</span>
+        <h1 class="font-headline-xl text-on-surface mb-6 leading-[1.1] tracking-tight">AI-Powered Growth <span class="text-primary-container">For Every Team</span></h1>
+        <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">From early-stage startups to global enterprises, GrowthPilot AI adapts to your scale and delivers measurable results across every growth function.</p>
+      </div>
+    </section>
+    <section class="py-24 px-gutter bg-surface">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-14 h-14 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-xl mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">trending_up</span>
+            </div>
+            <h3 class="font-headline-md text-on-surface mb-3">Revenue Acceleration</h3>
+            <p class="font-body-md text-on-surface-variant mb-6">Identify the highest-value growth levers in your pipeline. Our AI pinpoints revenue gaps and automates outreach sequences that convert.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Automated lead scoring</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Pipeline forecasting</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Churn prediction & prevention</li>
+            </ul>
+          </div>
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-14 h-14 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-xl mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">campaign</span>
+            </div>
+            <h3 class="font-headline-md text-on-surface mb-3">Marketing Intelligence</h3>
+            <p class="font-body-md text-on-surface-variant mb-6">Run campaigns that adapt in real time. GrowthPilot AI reads audience signals and optimizes spend allocation across every channel automatically.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Cross-channel attribution</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Dynamic budget optimization</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Audience segmentation AI</li>
+            </ul>
+          </div>
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-14 h-14 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-xl mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">groups</span>
+            </div>
+            <h3 class="font-headline-md text-on-surface mb-3">Customer Success Engine</h3>
+            <p class="font-body-md text-on-surface-variant mb-6">Proactively engage customers at risk of churning and surface upsell moments with precision timing powered by behavioral AI.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Health score monitoring</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Expansion revenue triggers</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> NPS predictive analysis</li>
+            </ul>
+          </div>
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/40 transition-all duration-300 group">
+            <div class="w-14 h-14 flex items-center justify-center bg-primary-container/10 text-primary-container rounded-xl mb-8 group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined text-[30px]">manage_search</span>
+            </div>
+            <h3 class="font-headline-md text-on-surface mb-3">Competitive Intelligence</h3>
+            <p class="font-body-md text-on-surface-variant mb-6">Monitor competitor moves in real time. Our neural engine tracks pricing changes, product launches, and market positioning shifts before they impact you.</p>
+            <ul class="space-y-2">
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Real-time competitor tracking</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Market share analysis</li>
+              <li class="flex items-center gap-2 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check_circle</span> Strategic response playbooks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-20 px-gutter bg-surface-container-lowest border-t border-outline-variant/10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h2 class="font-headline-lg text-on-surface mb-6">Find the right solution for your team</h2>
+        <p class="font-body-md text-on-surface-variant mb-10">Talk to our growth specialists and get a personalized demo tailored to your industry and goals.</p>
+        <button class="px-10 py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all">Request a Demo</button>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ==================== PLATFORM PAGE ==================== -->
+<div id="page-platform" class="page-section">
+  <div class="flex flex-col w-full">
+    <section class="relative py-24 px-gutter bg-surface-dim overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern height="60" id="plat-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+          <rect fill="url(#plat-grid)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto relative z-10 text-center">
+        <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-4">Platform</span>
+        <h1 class="font-headline-xl text-on-surface mb-6 leading-[1.1] tracking-tight">The Intelligence <span class="text-primary-container">Stack</span></h1>
+        <p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">A unified platform built on enterprise-grade infrastructure. Every module works in concert to deliver compounding growth advantages.</p>
+      </div>
+    </section>
+    <section class="py-24 px-gutter bg-surface">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div class="col-span-1 md:col-span-1 flex flex-col gap-6">
+            <div class="p-8 bg-surface-container-low border border-primary-container/30 rounded-xl">
+              <span class="material-symbols-outlined text-primary-container text-[32px] mb-4 block">psychology</span>
+              <h3 class="font-headline-md text-on-surface mb-2">Neural Core</h3>
+              <p class="font-body-md text-on-surface-variant text-sm">Our proprietary ML engine trained on 10B+ enterprise data points. Learns your business context continuously.</p>
+            </div>
+            <div class="p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl hover:border-primary-container/30 transition-all">
+              <span class="material-symbols-outlined text-primary-container text-[32px] mb-4 block">data_object</span>
+              <h3 class="font-headline-md text-on-surface mb-2">Data Fabric</h3>
+              <p class="font-body-md text-on-surface-variant text-sm">Unified data layer that connects all your sources — CRM, ERP, marketing tools, and custom APIs — into one coherent stream.</p>
+            </div>
+          </div>
+          <div class="col-span-1 md:col-span-2 bg-surface-container-low border border-outline-variant/20 rounded-xl p-10 flex flex-col justify-between">
+            <div>
+              <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-4">Core Modules</span>
+              <h3 class="font-headline-md text-on-surface mb-8">Everything you need, nothing you don't</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">speed</span><div><p class="font-semibold text-on-surface text-sm mb-1">Real-Time Analytics</p><p class="text-on-surface-variant text-sm">Live dashboards with sub-second refresh across all KPIs.</p></div></div>
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">smart_toy</span><div><p class="font-semibold text-on-surface text-sm mb-1">AI Recommendations</p><p class="text-on-surface-variant text-sm">Actionable next-best-action suggestions with confidence scores.</p></div></div>
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">lock</span><div><p class="font-semibold text-on-surface text-sm mb-1">Enterprise Security</p><p class="text-on-surface-variant text-sm">SOC2 Type II, GDPR compliant, SSO, and role-based access control.</p></div></div>
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">api</span><div><p class="font-semibold text-on-surface text-sm mb-1">Open API</p><p class="text-on-surface-variant text-sm">REST & GraphQL APIs to embed intelligence into any workflow.</p></div></div>
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">notifications_active</span><div><p class="font-semibold text-on-surface text-sm mb-1">Smart Alerts</p><p class="text-on-surface-variant text-sm">Anomaly detection notifies your team before issues become problems.</p></div></div>
+              <div class="flex items-start gap-4"><span class="material-symbols-outlined text-primary-container text-[22px] mt-1">bar_chart</span><div><p class="font-semibold text-on-surface text-sm mb-1">Custom Reporting</p><p class="text-on-surface-variant text-sm">Drag-and-drop report builder with scheduled delivery to stakeholders.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="p-10 bg-surface-container-lowest border border-outline-variant/10 rounded-xl">
+          <p class="text-[11px] font-bold text-outline uppercase tracking-[0.3em] mb-8 text-center">Integrates with your existing stack</p>
+          <div class="flex flex-wrap justify-center items-center gap-10 opacity-60">
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Salesforce</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">HubSpot</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">SAP</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Snowflake</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Slack</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Google Ads</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Stripe</div>
+            <div class="px-6 py-3 border border-outline-variant/30 rounded-lg text-sm text-on-surface-variant font-medium">Segment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ==================== PRICING PAGE ==================== -->
+<div id="page-pricing" class="page-section">
+  <div class="flex flex-col w-full">
+    <section class="py-24 px-gutter bg-surface-dim">
+      <div class="max-w-7xl mx-auto text-center">
+        <span class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] block mb-4">Pricing</span>
+        <h1 class="font-headline-xl text-on-surface mb-6 leading-[1.1] tracking-tight">Simple, <span class="text-primary-container">Transparent</span> Pricing</h1>
+        <p class="font-body-lg text-on-surface-variant max-w-xl mx-auto">No hidden fees. No lock-in contracts. Scale up or down anytime.</p>
+      </div>
+    </section>
+    <section class="py-16 px-gutter bg-surface">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <!-- Starter -->
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl flex flex-col">
+            <div class="mb-8">
+              <p class="text-[11px] font-bold text-outline uppercase tracking-[0.2em] mb-4">Starter</p>
+              <div class="flex items-end gap-2 mb-4">
+                <span class="text-5xl font-bold text-on-surface">$49</span>
+                <span class="text-on-surface-variant text-sm mb-2">/month</span>
+              </div>
+              <p class="text-on-surface-variant text-sm">Perfect for early-stage startups and small teams getting started with AI-driven growth.</p>
+            </div>
+            <div class="flex-1 space-y-3 mb-10">
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Up to 3 users</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>5 AI reports/month</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Basic analytics dashboard</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Email support</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant/40"><span class="material-symbols-outlined text-[18px]">close</span>Competitor tracking</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant/40"><span class="material-symbols-outlined text-[18px]">close</span>API access</div>
+            </div>
+            <button onclick="navigate('signup')" class="w-full py-3 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all">Get Started</button>
+          </div>
+          <!-- Growth (Featured) -->
+          <div class="p-10 bg-primary-container/10 border-2 border-primary-container rounded-xl flex flex-col relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-primary-container text-on-primary-container text-xs font-bold rounded-full uppercase tracking-wider">Most Popular</div>
+            <div class="mb-8">
+              <p class="text-[11px] font-bold text-primary-container uppercase tracking-[0.2em] mb-4">Growth</p>
+              <div class="flex items-end gap-2 mb-4">
+                <span class="text-5xl font-bold text-on-surface">$149</span>
+                <span class="text-on-surface-variant text-sm mb-2">/month</span>
+              </div>
+              <p class="text-on-surface-variant text-sm">For scaling companies that need full intelligence coverage across sales and marketing.</p>
+            </div>
+            <div class="flex-1 space-y-3 mb-10">
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Up to 15 users</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Unlimited AI reports</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Advanced analytics & forecasting</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Priority support</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Competitor tracking</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant/40"><span class="material-symbols-outlined text-[18px]">close</span>API access</div>
+            </div>
+            <button onclick="navigate('signup')" class="w-full py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all">Get Started</button>
+          </div>
+          <!-- Enterprise -->
+          <div class="p-10 bg-surface-container-low border border-outline-variant/20 rounded-xl flex flex-col">
+            <div class="mb-8">
+              <p class="text-[11px] font-bold text-outline uppercase tracking-[0.2em] mb-4">Enterprise</p>
+              <div class="flex items-end gap-2 mb-4">
+                <span class="text-5xl font-bold text-on-surface">Custom</span>
+              </div>
+              <p class="text-on-surface-variant text-sm">For large organizations that need dedicated infrastructure, SLAs, and custom integrations.</p>
+            </div>
+            <div class="flex-1 space-y-3 mb-10">
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Unlimited users</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Unlimited AI reports</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Dedicated infrastructure</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>24/7 dedicated support</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Competitor tracking</div>
+              <div class="flex items-center gap-3 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-primary-container text-[18px]">check</span>Full API access</div>
+            </div>
+            <button class="w-full py-3 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all">Talk to Sales</button>
+          </div>
+        </div>
+        <!-- FAQ -->
+        <div class="max-w-3xl mx-auto">
+          <h3 class="font-headline-md text-on-surface text-center mb-10">Frequently Asked Questions</h3>
+          <div class="space-y-4">
+            <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+              <p class="font-semibold text-on-surface mb-2">Can I switch plans anytime?</p>
+              <p class="text-on-surface-variant text-sm">Yes. Upgrade or downgrade at any time. Changes take effect at the start of your next billing cycle.</p>
+            </div>
+            <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+              <p class="font-semibold text-on-surface mb-2">Is there a free trial?</p>
+              <p class="text-on-surface-variant text-sm">All plans include a 14-day free trial with full access. No credit card required to start.</p>
+            </div>
+            <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+              <p class="font-semibold text-on-surface mb-2">What integrations are included?</p>
+              <p class="text-on-surface-variant text-sm">All plans include our core integrations: Salesforce, HubSpot, Google Ads, and Slack. Enterprise plans include custom integrations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<!-- ==================== LOGIN PAGE ==================== -->
+<div id="page-login" class="page-section">
+  <div class="min-h-screen flex items-center justify-center px-gutter py-24 bg-surface-dim relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern height="60" id="login-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+        <rect fill="url(#login-grid)" height="100%" width="100%"></rect>
+      </svg>
+    </div>
+    <div class="w-full max-w-md relative z-10">
+      <div class="text-center mb-10">
+        <div class="flex items-center justify-center gap-2 mb-6 cursor-pointer" onclick="navigate('home')">
+          <div class="w-9 h-9 bg-primary-container flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-on-primary-container text-[22px]">rocket_launch</span>
+          </div>
+          <span class="font-bold text-on-surface text-xl tracking-tight">GrowthPilot AI</span>
+        </div>
+        <h1 class="text-2xl font-bold text-on-surface mb-2">Welcome back</h1>
+        <p class="text-on-surface-variant text-sm">Sign in to your account to continue</p>
+      </div>
+      <div class="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-8">
+        <form id="login-form" onsubmit="handleLogin(event)" novalidate>
+          <div class="space-y-5">
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Email address</label>
+              <input id="login-email" type="email" placeholder="you@company.com"
+                class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+              <p id="login-email-err" class="text-red-400 text-xs mt-1 hidden">Please enter a valid email.</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-medium text-on-surface">Password</label>
+                <a class="text-xs text-primary-container hover:brightness-125 cursor-pointer transition-colors">Forgot password?</a>
+              </div>
+              <div class="relative">
+                <input id="login-password" type="password" placeholder="••••••••"
+                  class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors pr-12"/>
+                <button type="button" onclick="togglePassword('login-password', 'eye-login')"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors">
+                  <span id="eye-login" class="material-symbols-outlined text-[20px]">visibility</span>
+                </button>
+              </div>
+              <p id="login-pass-err" class="text-red-400 text-xs mt-1 hidden">Password must be at least 6 characters.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <input id="remember-me" type="checkbox" class="w-4 h-4 accent-amber-500 cursor-pointer"/>
+              <label for="remember-me" class="text-sm text-on-surface-variant cursor-pointer">Keep me signed in</label>
+            </div>
+            <button id="login-btn" type="submit"
+              class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-2">
+              <span id="login-btn-text">Sign In</span>
+              <span id="login-spinner" class="hidden material-symbols-outlined animate-spin text-[18px]">autorenew</span>
+            </button>
+          </div>
+        </form>
+        <div class="mt-6 pt-6 border-t border-outline-variant/20 text-center">
+          <p class="text-sm text-on-surface-variant">Don't have an account?
+            <a onclick="navigate('signup')" class="text-primary-container font-semibold hover:brightness-125 cursor-pointer ml-1 transition-colors">Sign up free</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SIGNUP PAGE ==================== -->
+<div id="page-signup" class="page-section">
+  <div class="min-h-screen flex items-center justify-center px-gutter py-24 bg-surface-dim relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern height="60" id="signup-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+        <rect fill="url(#signup-grid)" height="100%" width="100%"></rect>
+      </svg>
+    </div>
+    <div class="w-full max-w-lg relative z-10">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2 mb-6 cursor-pointer" onclick="navigate('home')">
+          <div class="w-9 h-9 bg-primary-container flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-on-primary-container text-[22px]">rocket_launch</span>
+          </div>
+          <span class="font-bold text-on-surface text-xl tracking-tight">GrowthPilot AI</span>
+        </div>
+        <!-- Step Indicator -->
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div id="step-dot-1" class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container text-xs font-bold flex items-center justify-center transition-all">1</div>
+          <div class="w-10 h-0.5 bg-outline-variant/30" id="step-line-1"></div>
+          <div id="step-dot-2" class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center transition-all">2</div>
+          <div class="w-10 h-0.5 bg-outline-variant/30" id="step-line-2"></div>
+          <div id="step-dot-3" class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center transition-all">3</div>
+        </div>
+        <h1 id="signup-title" class="text-2xl font-bold text-on-surface mb-1">Create your account</h1>
+        <p id="signup-subtitle" class="text-on-surface-variant text-sm">Start your 14-day free trial. No credit card required.</p>
+      </div>
+
+      <div class="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-8">
+        <!-- Step 1: Account Details -->
+        <div id="signup-step-1">
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-on-surface mb-2">First name</label>
+                <input id="signup-fname" type="text" placeholder="Alex"
+                  class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+                <p id="err-fname" class="text-red-400 text-xs mt-1 hidden">Required.</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-on-surface mb-2">Last name</label>
+                <input id="signup-lname" type="text" placeholder="Johnson"
+                  class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+                <p id="err-lname" class="text-red-400 text-xs mt-1 hidden">Required.</p>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Work email</label>
+              <input id="signup-email" type="email" placeholder="you@company.com"
+                class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+              <p id="err-email" class="text-red-400 text-xs mt-1 hidden">Enter a valid email.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Password</label>
+              <div class="relative">
+                <input id="signup-password" type="password" placeholder="Min. 8 characters"
+                  class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors pr-12"/>
+                <button type="button" onclick="togglePassword('signup-password', 'eye-signup')"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors">
+                  <span id="eye-signup" class="material-symbols-outlined text-[20px]">visibility</span>
+                </button>
+              </div>
+              <p id="err-pass" class="text-red-400 text-xs mt-1 hidden">Min. 8 characters required.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Company name</label>
+              <input id="signup-company" type="text" placeholder="Acme Inc."
+                class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+            </div>
+            <button onclick="goToStep2()"
+              class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 mt-2">
+              Continue <span class="material-symbols-outlined text-[18px] align-middle ml-1">arrow_forward</span>
+            </button>
+          </div>
+          <div class="mt-5 text-center">
+            <p class="text-sm text-on-surface-variant">Already have an account?
+              <a onclick="navigate('login')" class="text-primary-container font-semibold hover:brightness-125 cursor-pointer ml-1 transition-colors">Sign in</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2: Choose Plan -->
+        <div id="signup-step-2" class="hidden">
+          <p class="text-sm text-on-surface-variant mb-6">Choose your plan — you can always change later.</p>
+          <div class="space-y-3 mb-6" id="plan-options">
+            <label class="flex items-center gap-4 p-4 border-2 border-primary-container bg-primary-container/10 rounded-xl cursor-pointer plan-option transition-all" data-plan="growth">
+              <input type="radio" name="plan" value="growth" checked class="accent-amber-500 w-4 h-4"/>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold text-on-surface text-sm">Growth</p>
+                  <span class="text-xs px-2 py-0.5 bg-primary-container text-on-primary-container rounded-full font-bold">Popular</span>
+                </div>
+                <p class="text-on-surface-variant text-xs mt-0.5">$149/month · Up to 15 users · All features</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-4 p-4 border border-outline-variant/30 rounded-xl cursor-pointer plan-option hover:border-primary-container/40 transition-all" data-plan="starter">
+              <input type="radio" name="plan" value="starter" class="accent-amber-500 w-4 h-4"/>
+              <div>
+                <p class="font-semibold text-on-surface text-sm">Starter</p>
+                <p class="text-on-surface-variant text-xs mt-0.5">$49/month · Up to 3 users · Basic analytics</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-4 p-4 border border-outline-variant/30 rounded-xl cursor-pointer plan-option hover:border-primary-container/40 transition-all" data-plan="enterprise">
+              <input type="radio" name="plan" value="enterprise" class="accent-amber-500 w-4 h-4"/>
+              <div>
+                <p class="font-semibold text-on-surface text-sm">Enterprise</p>
+                <p class="text-on-surface-variant text-xs mt-0.5">Custom pricing · Unlimited users · Full access</p>
+              </div>
+            </label>
+          </div>
+          <div class="flex gap-3">
+            <button onclick="backToStep1()" class="flex-1 py-3 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all text-sm">
+              <span class="material-symbols-outlined text-[16px] align-middle mr-1">arrow_back</span> Back
+            </button>
+            <button onclick="goToStep3()" class="flex-[2] py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all text-sm">
+              Start Free Trial <span class="material-symbols-outlined text-[16px] align-middle ml-1">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div id="signup-step-3" class="hidden text-center py-4">
+          <div class="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-primary-container text-[44px]">check_circle</span>
+          </div>
+          <h2 class="text-xl font-bold text-on-surface mb-2">You're all set!</h2>
+          <p class="text-on-surface-variant text-sm mb-8">Your 14-day free trial has started. Welcome to GrowthPilot AI.</p>
+          <button onclick="navigate('dashboard')"
+            class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200">
+            Go to Dashboard <span class="material-symbols-outlined text-[18px] align-middle ml-1">dashboard</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DASHBOARD PAGE ==================== -->
+<div id="page-dashboard" class="page-section">
+  <div class="min-h-screen bg-surface">
+    <!-- Dashboard Top Bar -->
+    <div class="bg-surface-container-low border-b border-outline-variant/20 px-gutter py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div>
+          <h1 class="text-lg font-bold text-on-surface">Good morning, Alex 👋</h1>
+          <p class="text-on-surface-variant text-xs">Sunday, Aug 2, 2026 · Growth Plan · Trial: 14 days left</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="w-9 h-9 flex items-center justify-center bg-surface border border-outline-variant/30 rounded-lg hover:border-primary-container/40 transition-all">
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px]">notifications</span>
+          </button>
+          <div class="w-9 h-9 bg-primary-container rounded-full flex items-center justify-center cursor-pointer">
+            <span class="text-on-primary-container text-sm font-bold">A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Dashboard Content -->
+    <div class="max-w-7xl mx-auto px-gutter py-10">
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Revenue</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">payments</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">$48,200</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span>12.4% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">New Leads</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">person_add</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">1,284</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span>8.1% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Conversion</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">trending_up</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">3.8%</p>
+          <p class="text-xs text-red-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_downward</span>0.3% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Churn Rate</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">person_remove</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">1.2%</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_downward</span>0.5% vs last month</p>
+        </div>
+      </div>
+      <!-- Chart + Activity -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <!-- Chart -->
+        <div class="col-span-2 p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-semibold text-on-surface">Revenue Overview</h3>
+            <select class="bg-surface border border-outline-variant/30 text-on-surface-variant text-xs px-3 py-1.5 rounded-lg focus:outline-none">
+              <option>Last 6 months</option><option>Last 12 months</option><option>This year</option>
+            </select>
+          </div>
+          <div class="flex items-end gap-3 h-40">
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:55%"></div><span class="text-[10px] text-on-surface-variant">Feb</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:65%"></div><span class="text-[10px] text-on-surface-variant">Mar</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:45%"></div><span class="text-[10px] text-on-surface-variant">Apr</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/30 rounded-t hover:bg-primary-container/50 transition-all cursor-pointer" style="height:75%"></div><span class="text-[10px] text-on-surface-variant">May</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/40 rounded-t hover:bg-primary-container/60 transition-all cursor-pointer" style="height:85%"></div><span class="text-[10px] text-on-surface-variant">Jun</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t shadow-[0_0_16px_rgba(245,158,11,0.4)] cursor-pointer" style="height:100%"></div><span class="text-[10px] text-primary-container font-bold">Jul</span></div>
+          </div>
+        </div>
+        <!-- AI Insights -->
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl flex flex-col">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="material-symbols-outlined text-primary-container text-[20px]">psychology</span>
+            <h3 class="font-semibold text-on-surface text-sm">AI Insights</h3>
+          </div>
+          <div class="space-y-3 flex-1">
+            <div class="p-3 bg-surface rounded-lg border border-primary-container/20">
+              <p class="text-xs text-on-surface font-medium mb-1">🚀 Upsell opportunity</p>
+              <p class="text-xs text-on-surface-variant">23 accounts show expansion signals. Reach out now.</p>
+            </div>
+            <div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+              <p class="text-xs text-on-surface font-medium mb-1">⚠️ Churn risk</p>
+              <p class="text-xs text-on-surface-variant">4 accounts haven't logged in for 14+ days.</p>
+            </div>
+            <div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+              <p class="text-xs text-on-surface font-medium mb-1">📈 Campaign winning</p>
+              <p class="text-xs text-on-surface-variant">Email sequence B has 2.3x higher CTR than baseline.</p>
+            </div>
+          </div>
+          <button class="mt-4 w-full py-2 border border-outline-variant/30 text-on-surface-variant text-xs font-medium rounded-lg hover:border-primary-container/40 hover:text-on-surface transition-all">View all insights</button>
+        </div>
+      </div>
+      <!-- Recent Activity -->
+      <div class="p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+        <h3 class="font-semibold text-on-surface mb-6">Recent Activity</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-green-400 text-[16px]">check_circle</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Deal closed — Acme Corp</p><p class="text-xs text-on-surface-variant">$12,000 ARR · 2 hours ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-green-500/10 text-green-400 rounded-full">Won</span>
+          </div>
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-primary-container/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-primary-container text-[16px]">person_add</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">New lead — TechFlow Inc.</p><p class="text-xs text-on-surface-variant">Inbound · Marketing · 5 hours ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-primary-container/10 text-primary-container rounded-full">New</span>
+          </div>
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-red-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-red-400 text-[16px]">warning</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Churn alert — Zephyr Labs</p><p class="text-xs text-on-surface-variant">Usage dropped 60% · 1 day ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-red-500/10 text-red-400 rounded-full">At Risk</span>
+          </div>
+          <div class="flex items-center gap-4 py-3">
+            <div class="w-8 h-8 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-blue-400 text-[16px]">campaign</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Campaign launched — Q3 Outreach</p><p class="text-xs text-on-surface-variant">480 contacts · Email · 2 days ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== LOGIN PAGE ==================== -->
+<div id="page-login" class="page-section">
+  <div class="min-h-screen flex items-center justify-center px-gutter py-24 bg-surface-dim relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern height="60" id="login-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+        <rect fill="url(#login-grid)" height="100%" width="100%"></rect>
+      </svg>
+    </div>
+    <div class="w-full max-w-md relative z-10">
+      <div class="text-center mb-10">
+        <div class="flex items-center justify-center gap-2 mb-6 cursor-pointer" onclick="navigate('home')">
+          <div class="w-9 h-9 bg-primary-container flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-on-primary-container text-[22px]">rocket_launch</span>
+          </div>
+          <span class="font-bold text-on-surface text-xl tracking-tight">GrowthPilot AI</span>
+        </div>
+        <h1 class="text-2xl font-bold text-on-surface mb-2">Welcome back</h1>
+        <p class="text-on-surface-variant text-sm">Sign in to your account to continue</p>
+      </div>
+      <div class="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-8">
+        <form id="login-form" onsubmit="handleLogin(event)" novalidate>
+          <div class="space-y-5">
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Email address</label>
+              <input id="login-email" type="email" placeholder="you@company.com"
+                class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+              <p id="login-email-err" class="text-red-400 text-xs mt-1 hidden">Please enter a valid email.</p>
+            </div>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-medium text-on-surface">Password</label>
+                <a class="text-xs text-primary-container hover:brightness-125 cursor-pointer transition-colors">Forgot password?</a>
+              </div>
+              <div class="relative">
+                <input id="login-password" type="password" placeholder="••••••••"
+                  class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors pr-12"/>
+                <button type="button" onclick="togglePassword('login-password','eye-login')"
+                  class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors">
+                  <span id="eye-login" class="material-symbols-outlined text-[20px]">visibility</span>
+                </button>
+              </div>
+              <p id="login-pass-err" class="text-red-400 text-xs mt-1 hidden">Password must be at least 6 characters.</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <input id="remember-me" type="checkbox" class="w-4 h-4 accent-amber-500 cursor-pointer"/>
+              <label for="remember-me" class="text-sm text-on-surface-variant cursor-pointer">Keep me signed in</label>
+            </div>
+            <button id="login-btn" type="submit"
+              class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all duration-200 flex items-center justify-center gap-2">
+              <span id="login-btn-text">Sign In</span>
+              <span id="login-spinner" class="hidden material-symbols-outlined text-[18px]" style="animation: spin 1s linear infinite;">autorenew</span>
+            </button>
+          </div>
+        </form>
+        <div class="mt-6 pt-6 border-t border-outline-variant/20 text-center">
+          <p class="text-sm text-on-surface-variant">Don't have an account?
+            <a onclick="navigate('signup')" class="text-primary-container font-semibold hover:brightness-125 cursor-pointer ml-1">Sign up free</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SIGNUP PAGE ==================== -->
+<div id="page-signup" class="page-section">
+  <div class="min-h-screen flex items-center justify-center px-gutter py-24 bg-surface-dim relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.07] pointer-events-none">
+      <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <defs><pattern height="60" id="signup-grid" patternunits="userSpaceOnUse" width="60"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+        <rect fill="url(#signup-grid)" height="100%" width="100%"></rect>
+      </svg>
+    </div>
+    <div class="w-full max-w-lg relative z-10">
+      <div class="text-center mb-8">
+        <div class="flex items-center justify-center gap-2 mb-6 cursor-pointer" onclick="navigate('home')">
+          <div class="w-9 h-9 bg-primary-container flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-on-primary-container text-[22px]">rocket_launch</span>
+          </div>
+          <span class="font-bold text-on-surface text-xl tracking-tight">GrowthPilot AI</span>
+        </div>
+        <div class="flex items-center justify-center gap-3 mb-6">
+          <div id="step-dot-1" class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container text-xs font-bold flex items-center justify-center transition-all">1</div>
+          <div class="w-10 h-0.5 bg-outline-variant/30"></div>
+          <div id="step-dot-2" class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center transition-all">2</div>
+          <div class="w-10 h-0.5 bg-outline-variant/30"></div>
+          <div id="step-dot-3" class="w-8 h-8 rounded-full bg-surface-container border border-outline-variant/30 text-on-surface-variant text-xs font-bold flex items-center justify-center transition-all">3</div>
+        </div>
+        <h1 id="signup-title" class="text-2xl font-bold text-on-surface mb-1">Create your account</h1>
+        <p id="signup-subtitle" class="text-on-surface-variant text-sm">Start your 14-day free trial. No credit card required.</p>
+      </div>
+      <div class="bg-surface-container-low border border-outline-variant/20 rounded-2xl p-8">
+        <!-- Step 1 -->
+        <div id="signup-step-1">
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-on-surface mb-2">First name</label>
+                <input id="signup-fname" type="text" placeholder="Alex" class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+                <p id="err-fname" class="text-red-400 text-xs mt-1 hidden">Required.</p>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-on-surface mb-2">Last name</label>
+                <input id="signup-lname" type="text" placeholder="Johnson" class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+                <p id="err-lname" class="text-red-400 text-xs mt-1 hidden">Required.</p>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Work email</label>
+              <input id="signup-email" type="email" placeholder="you@company.com" class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+              <p id="err-email" class="text-red-400 text-xs mt-1 hidden">Enter a valid email.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Password</label>
+              <div class="relative">
+                <input id="signup-password" type="password" placeholder="Min. 8 characters" class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors pr-12"/>
+                <button type="button" onclick="togglePassword('signup-password','eye-signup')" class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface transition-colors">
+                  <span id="eye-signup" class="material-symbols-outlined text-[20px]">visibility</span>
+                </button>
+              </div>
+              <p id="err-pass" class="text-red-400 text-xs mt-1 hidden">Min. 8 characters required.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-on-surface mb-2">Company name</label>
+              <input id="signup-company" type="text" placeholder="Acme Inc." class="w-full px-4 py-3 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+            </div>
+            <button onclick="goToStep2()" class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all mt-2">
+              Continue <span class="material-symbols-outlined text-[18px] align-middle ml-1">arrow_forward</span>
+            </button>
+          </div>
+          <div class="mt-5 text-center">
+            <p class="text-sm text-on-surface-variant">Already have an account?
+              <a onclick="navigate('login')" class="text-primary-container font-semibold cursor-pointer ml-1">Sign in</a>
+            </p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div id="signup-step-2" class="hidden">
+          <p class="text-sm text-on-surface-variant mb-6">Choose your plan — you can always change later.</p>
+          <div class="space-y-3 mb-6">
+            <label class="flex items-center gap-4 p-4 border-2 border-primary-container bg-primary-container/10 rounded-xl cursor-pointer transition-all">
+              <input type="radio" name="plan" value="growth" checked class="accent-amber-500 w-4 h-4"/>
+              <div class="flex-1">
+                <div class="flex items-center justify-between">
+                  <p class="font-semibold text-on-surface text-sm">Growth</p>
+                  <span class="text-xs px-2 py-0.5 bg-primary-container text-on-primary-container rounded-full font-bold">Popular</span>
+                </div>
+                <p class="text-on-surface-variant text-xs mt-0.5">$149/month · Up to 15 users · All features</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-4 p-4 border border-outline-variant/30 rounded-xl cursor-pointer hover:border-primary-container/40 transition-all">
+              <input type="radio" name="plan" value="starter" class="accent-amber-500 w-4 h-4"/>
+              <div>
+                <p class="font-semibold text-on-surface text-sm">Starter</p>
+                <p class="text-on-surface-variant text-xs mt-0.5">$49/month · Up to 3 users · Basic analytics</p>
+              </div>
+            </label>
+            <label class="flex items-center gap-4 p-4 border border-outline-variant/30 rounded-xl cursor-pointer hover:border-primary-container/40 transition-all">
+              <input type="radio" name="plan" value="enterprise" class="accent-amber-500 w-4 h-4"/>
+              <div>
+                <p class="font-semibold text-on-surface text-sm">Enterprise</p>
+                <p class="text-on-surface-variant text-xs mt-0.5">Custom pricing · Unlimited users · Full access</p>
+              </div>
+            </label>
+          </div>
+          <div class="flex gap-3">
+            <button onclick="backToStep1()" class="flex-1 py-3 border border-outline-variant text-on-surface font-semibold rounded-xl hover:bg-surface-container transition-all text-sm">
+              <span class="material-symbols-outlined text-[16px] align-middle mr-1">arrow_back</span>Back
+            </button>
+            <button onclick="goToStep3()" class="flex-[2] py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all text-sm">
+              Start Free Trial <span class="material-symbols-outlined text-[16px] align-middle ml-1">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div id="signup-step-3" class="hidden text-center py-4">
+          <div class="w-20 h-20 bg-primary-container/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span class="material-symbols-outlined text-primary-container text-[44px]">check_circle</span>
+          </div>
+          <h2 class="text-xl font-bold text-on-surface mb-2">You're all set!</h2>
+          <p class="text-on-surface-variant text-sm mb-8">Your 14-day free trial has started. Welcome to GrowthPilot AI.</p>
+          <button onclick="navigate('dashboard')" class="w-full py-3.5 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all">
+            Go to Dashboard <span class="material-symbols-outlined text-[18px] align-middle ml-1">dashboard</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== EXPERT MODAL ==================== -->
+<div id="expert-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeExpertModal()"></div>
+  <div class="relative w-full max-w-md bg-surface-container-low border border-outline-variant/30 rounded-2xl overflow-hidden shadow-2xl z-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant/20">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-primary-container/10 rounded-lg flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary-container text-[18px]">support_agent</span>
+        </div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">Talk to an Expert</p>
+          <p class="text-on-surface-variant text-xs">We usually respond within 2 hours</p>
+        </div>
+      </div>
+      <button onclick="closeExpertModal()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container transition-all text-on-surface-variant hover:text-on-surface">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+    <!-- Form -->
+    <div class="px-6 py-6" id="expert-form-wrap">
+      <p class="text-on-surface-variant text-sm mb-6">Fill in your details and a GrowthPilot expert will reach out to schedule a personalized demo.</p>
+      <div class="space-y-4">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-medium text-on-surface mb-1.5">First name</label>
+            <input id="expert-fname" type="text" placeholder="Alex"
+              class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+            <p id="expert-err-fname" class="text-red-400 text-xs mt-1 hidden">Required.</p>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-on-surface mb-1.5">Last name</label>
+            <input id="expert-lname" type="text" placeholder="Johnson"
+              class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-on-surface mb-1.5">Work email</label>
+          <input id="expert-email" type="email" placeholder="you@company.com"
+            class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+          <p id="expert-err-email" class="text-red-400 text-xs mt-1 hidden">Enter a valid email.</p>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-on-surface mb-1.5">Company</label>
+          <input id="expert-company" type="text" placeholder="Acme Inc."
+            class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-on-surface mb-1.5">Team size</label>
+          <select id="expert-size" class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary-container transition-colors">
+            <option value="">Select team size</option>
+            <option>1–10 employees</option>
+            <option>11–50 employees</option>
+            <option>51–200 employees</option>
+            <option>201–1000 employees</option>
+            <option>1000+ employees</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-on-surface mb-1.5">What are you looking to achieve?</label>
+          <textarea id="expert-message" rows="3" placeholder="e.g. We want to improve lead conversion and reduce churn..."
+            class="w-full px-3 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors resize-none"></textarea>
+        </div>
+        <button onclick="submitExpertForm()" id="expert-submit-btn"
+          class="w-full py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all flex items-center justify-center gap-2">
+          <span id="expert-btn-text">Request a Call</span>
+          <span id="expert-spinner" class="hidden material-symbols-outlined text-[18px] spinning">autorenew</span>
+        </button>
+      </div>
+    </div>
+    <!-- Success State -->
+    <div id="expert-success" class="hidden px-6 py-10 text-center">
+      <div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-primary-container text-[36px]">mark_email_read</span>
+      </div>
+      <h3 class="font-bold text-on-surface text-lg mb-2">Request received!</h3>
+      <p class="text-on-surface-variant text-sm mb-6">An expert will reach out to <span id="expert-confirm-email" class="text-primary-container font-semibold"></span> within 2 hours to schedule your call.</p>
+      <button onclick="closeExpertModal()" class="px-6 py-2.5 border border-outline-variant/30 text-on-surface text-sm font-semibold rounded-xl hover:bg-surface-container transition-all">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== DEMO MODAL ==================== -->
+<div id="demo-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeDemoModal()"></div>
+  <!-- Modal Box -->
+  <div class="relative w-full max-w-3xl bg-surface-container-low border border-outline-variant/30 rounded-2xl overflow-hidden shadow-2xl z-10">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant/20">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-primary-container/10 rounded-lg flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary-container text-[18px]">play_circle</span>
+        </div>
+        <div>
+          <p class="font-semibold text-on-surface text-sm">GrowthPilot AI — Product Demo</p>
+          <p class="text-on-surface-variant text-xs">3 min walkthrough · No signup needed</p>
+        </div>
+      </div>
+      <button onclick="closeDemoModal()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-surface-container transition-all text-on-surface-variant hover:text-on-surface">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+    </div>
+    <!-- Video Placeholder -->
+    <div class="relative bg-surface-dim aspect-video flex items-center justify-center group cursor-pointer" onclick="playDemo()">
+      <!-- Fake thumbnail grid bg -->
+      <div class="absolute inset-0 opacity-[0.08]">
+        <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs><pattern height="40" id="demo-grid" patternunits="userSpaceOnUse" width="40"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffc174" stroke-width="0.5"></path></pattern></defs>
+          <rect fill="url(#demo-grid)" height="100%" width="100%"></rect>
+        </svg>
+      </div>
+      <!-- Mock dashboard screenshot feel -->
+      <div class="absolute inset-6 bg-surface-container rounded-xl border border-outline-variant/20 p-4 flex flex-col gap-3 opacity-40">
+        <div class="flex gap-3">
+          <div class="flex-1 h-14 bg-primary-container/20 rounded-lg"></div>
+          <div class="flex-1 h-14 bg-outline-variant/20 rounded-lg"></div>
+          <div class="flex-1 h-14 bg-primary-container/30 rounded-lg"></div>
+          <div class="flex-1 h-14 bg-outline-variant/20 rounded-lg"></div>
+        </div>
+        <div class="flex gap-3 flex-1">
+          <div class="flex-[2] bg-outline-variant/10 rounded-lg"></div>
+          <div class="flex-1 bg-primary-container/10 rounded-lg"></div>
+        </div>
+      </div>
+      <!-- Play Button -->
+      <div id="demo-play-btn" class="relative z-10 w-20 h-20 bg-primary-container rounded-full flex items-center justify-center shadow-2xl shadow-primary-container/30 group-hover:scale-110 transition-transform duration-200">
+        <span class="material-symbols-outlined text-on-primary-container text-[40px] ml-1">play_arrow</span>
+      </div>
+      <!-- Playing state -->
+      <div id="demo-playing" class="hidden absolute inset-0 flex items-center justify-center bg-surface-dim/95 z-20 flex-col gap-4">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+          <span class="text-xs font-bold text-primary-container uppercase tracking-widest">Playing Demo</span>
+        </div>
+        <!-- Fake progress bar -->
+        <div class="w-64 h-1.5 bg-outline-variant/30 rounded-full overflow-hidden">
+          <div id="demo-progress" class="h-full bg-primary-container rounded-full" style="width:0%; transition: width 0.5s linear;"></div>
+        </div>
+        <p class="text-on-surface-variant text-xs" id="demo-time">0:00 / 3:00</p>
+        <button onclick="stopDemo(event)" class="mt-2 flex items-center gap-2 px-4 py-2 border border-outline-variant/30 rounded-lg text-on-surface-variant text-xs hover:border-primary-container/40 transition-all">
+          <span class="material-symbols-outlined text-[16px]">stop</span> Stop
+        </button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div class="px-6 py-4 flex items-center justify-between border-t border-outline-variant/20">
+      <p class="text-xs text-on-surface-variant">Like what you see?</p>
+      <button onclick="closeDemoModal(); navigate('signup');" class="px-5 py-2 bg-primary-container text-on-primary-container text-sm font-bold rounded-xl hover:brightness-110 transition-all">
+        Start Free Trial <span class="material-symbols-outlined text-[16px] align-middle ml-1">arrow_forward</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/20">
+  <!-- Newsletter Strip -->
+  <div class="border-b border-outline-variant/10 py-10 px-gutter">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <p class="font-semibold text-on-surface mb-1">Stay ahead of the curve</p>
+        <p class="text-on-surface-variant text-sm">Get weekly growth intelligence delivered to your inbox.</p>
+      </div>
+      <div class="flex gap-3 w-full md:w-auto">
+        <input id="newsletter-email" type="email" placeholder="Enter your work email"
+          class="flex-1 md:w-64 px-4 py-2.5 bg-surface border border-outline-variant/40 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors"/>
+        <button onclick="subscribeNewsletter()" class="px-5 py-2.5 bg-primary-container text-on-primary-container text-sm font-bold rounded-xl hover:brightness-110 transition-all whitespace-nowrap">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer Grid -->
+  <div class="max-w-7xl mx-auto px-gutter py-16">
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
+      <!-- Brand Col -->
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-5 cursor-pointer" onclick="navigate('home')">
+          <div class="w-8 h-8 bg-primary-container flex items-center justify-center rounded-lg">
+            <span class="material-symbols-outlined text-on-primary-container text-[18px]">rocket_launch</span>
+          </div>
+          <span class="font-bold text-on-surface text-lg tracking-tight">GrowthPilot AI</span>
+        </div>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-6 max-w-xs">The complete AI growth engine for ambitious teams. Scale with precision intelligence.</p>
+        <!-- Social Icons -->
+        <div class="flex items-center gap-3">
+          <a class="w-9 h-9 flex items-center justify-center bg-surface border border-outline-variant/30 rounded-lg hover:border-primary-container/50 hover:text-primary-container text-on-surface-variant transition-all cursor-pointer" title="Twitter / X">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a class="w-9 h-9 flex items-center justify-center bg-surface border border-outline-variant/30 rounded-lg hover:border-primary-container/50 hover:text-primary-container text-on-surface-variant transition-all cursor-pointer" title="LinkedIn">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a class="w-9 h-9 flex items-center justify-center bg-surface border border-outline-variant/30 rounded-lg hover:border-primary-container/50 hover:text-primary-container text-on-surface-variant transition-all cursor-pointer" title="GitHub">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Product Col -->
+      <div>
+        <p class="text-[10px] font-bold text-on-surface uppercase tracking-widest mb-5">Product</p>
+        <div class="flex flex-col gap-3">
+          <a onclick="navigate('solutions')" class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Solutions</a>
+          <a onclick="navigate('platform')" class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Platform</a>
+          <a onclick="navigate('pricing')" class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Pricing</a>
+          <a onclick="openDemoModal()" class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Watch Demo</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Changelog</a>
+        </div>
+      </div>
+
+      <!-- Company Col -->
+      <div>
+        <p class="text-[10px] font-bold text-on-surface uppercase tracking-widest mb-5">Company</p>
+        <div class="flex flex-col gap-3">
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">About Us</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Blog</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Careers <span class="ml-1 text-[10px] px-1.5 py-0.5 bg-primary-container/20 text-primary-container rounded-full font-bold">3 open</span></a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Press</a>
+          <a onclick="openExpertModal()" class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Contact Sales</a>
+        </div>
+      </div>
+
+      <!-- Legal Col -->
+      <div>
+        <p class="text-[10px] font-bold text-on-surface uppercase tracking-widest mb-5">Legal</p>
+        <div class="flex flex-col gap-3">
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Privacy Policy</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Terms of Service</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Cookie Policy</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">GDPR</a>
+          <a class="text-on-surface-variant text-sm hover:text-primary-container transition-colors cursor-pointer">Security</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="border-t border-outline-variant/10 py-6 px-gutter">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-xs text-outline">© 2026 GrowthPilot AI Inc. All rights reserved.</p>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2 px-3 py-1.5 bg-surface border border-outline-variant/20 rounded-full">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          <span class="text-[11px] text-on-surface-variant font-medium">All systems operational</span>
+        </div>
+        <span class="text-xs text-outline">SOC2 Certified · GDPR Compliant</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== DASHBOARD PAGE ==================== -->
+<div id="page-dashboard" class="page-section">
+  <div class="min-h-screen bg-surface">
+    <div class="bg-surface-container-low border-b border-outline-variant/20 px-gutter py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div>
+          <h1 class="text-lg font-bold text-on-surface">Good morning, Alex 👋</h1>
+          <p class="text-on-surface-variant text-xs">Sunday, Aug 2, 2026 · Growth Plan · Trial: 14 days left</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="w-9 h-9 flex items-center justify-center bg-surface border border-outline-variant/30 rounded-lg hover:border-primary-container/40 transition-all">
+            <span class="material-symbols-outlined text-on-surface-variant text-[20px]">notifications</span>
+          </button>
+          <div onclick="navigate('home')" class="w-9 h-9 bg-primary-container rounded-full flex items-center justify-center cursor-pointer" title="Back to Home">
+            <span class="text-on-primary-container text-sm font-bold">A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-gutter py-10">
+      <!-- KPI Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Revenue</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">payments</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">$48,200</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span>12.4% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">New Leads</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">person_add</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">1,284</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_upward</span>8.1% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Conversion</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">trending_up</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">3.8%</p>
+          <p class="text-xs text-red-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_downward</span>0.3% vs last month</p>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-on-surface-variant text-xs font-medium uppercase tracking-wider">Churn Rate</span>
+            <span class="material-symbols-outlined text-primary-container text-[20px]">person_remove</span>
+          </div>
+          <p class="text-2xl font-bold text-on-surface mb-1">1.2%</p>
+          <p class="text-xs text-green-400 flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">arrow_downward</span>0.5% vs last month</p>
+        </div>
+      </div>
+      <!-- Chart + AI Insights -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div class="col-span-2 p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+          <div class="flex items-center justify-between mb-6">
+            <h3 class="font-semibold text-on-surface">Revenue Overview</h3>
+            <select class="bg-surface border border-outline-variant/30 text-on-surface-variant text-xs px-3 py-1.5 rounded-lg focus:outline-none">
+              <option>Last 6 months</option><option>Last 12 months</option><option>This year</option>
+            </select>
+          </div>
+          <div class="flex items-end gap-3 h-40">
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:55%"></div><span class="text-[10px] text-on-surface-variant">Feb</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:65%"></div><span class="text-[10px] text-on-surface-variant">Mar</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/20 rounded-t hover:bg-primary-container/40 transition-all cursor-pointer" style="height:45%"></div><span class="text-[10px] text-on-surface-variant">Apr</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/30 rounded-t hover:bg-primary-container/50 transition-all cursor-pointer" style="height:75%"></div><span class="text-[10px] text-on-surface-variant">May</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container/40 rounded-t hover:bg-primary-container/60 transition-all cursor-pointer" style="height:85%"></div><span class="text-[10px] text-on-surface-variant">Jun</span></div>
+            <div class="flex flex-col items-center gap-2 flex-1"><div class="w-full bg-primary-container rounded-t shadow-[0_0_16px_rgba(245,158,11,0.4)] cursor-pointer" style="height:100%"></div><span class="text-[10px] text-primary-container font-bold">Jul</span></div>
+          </div>
+        </div>
+        <div class="p-6 bg-surface-container-low border border-outline-variant/20 rounded-xl flex flex-col">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="material-symbols-outlined text-primary-container text-[20px]">psychology</span>
+            <h3 class="font-semibold text-on-surface text-sm">AI Insights</h3>
+          </div>
+          <div class="space-y-3 flex-1">
+            <div class="p-3 bg-surface rounded-lg border border-primary-container/20">
+              <p class="text-xs text-on-surface font-medium mb-1">🚀 Upsell opportunity</p>
+              <p class="text-xs text-on-surface-variant">23 accounts show expansion signals. Reach out now.</p>
+            </div>
+            <div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+              <p class="text-xs text-on-surface font-medium mb-1">⚠️ Churn risk</p>
+              <p class="text-xs text-on-surface-variant">4 accounts haven't logged in for 14+ days.</p>
+            </div>
+            <div class="p-3 bg-surface rounded-lg border border-outline-variant/20">
+              <p class="text-xs text-on-surface font-medium mb-1">📈 Campaign winning</p>
+              <p class="text-xs text-on-surface-variant">Email sequence B has 2.3x higher CTR than baseline.</p>
+            </div>
+          </div>
+          <button class="mt-4 w-full py-2 border border-outline-variant/30 text-on-surface-variant text-xs font-medium rounded-lg hover:border-primary-container/40 transition-all">View all insights</button>
+        </div>
+      </div>
+      <!-- Recent Activity -->
+      <div class="p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+        <h3 class="font-semibold text-on-surface mb-6">Recent Activity</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-green-400 text-[16px]">check_circle</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Deal closed — Acme Corp</p><p class="text-xs text-on-surface-variant">$12,000 ARR · 2 hours ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-green-500/10 text-green-400 rounded-full">Won</span>
+          </div>
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-primary-container/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-primary-container text-[16px]">person_add</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">New lead — TechFlow Inc.</p><p class="text-xs text-on-surface-variant">Inbound · Marketing · 5 hours ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-primary-container/10 text-primary-container rounded-full">New</span>
+          </div>
+          <div class="flex items-center gap-4 py-3 border-b border-outline-variant/10">
+            <div class="w-8 h-8 bg-red-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-red-400 text-[16px]">warning</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Churn alert — Zephyr Labs</p><p class="text-xs text-on-surface-variant">Usage dropped 60% · 1 day ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-red-500/10 text-red-400 rounded-full">At Risk</span>
+          </div>
+          <div class="flex items-center gap-4 py-3">
+            <div class="w-8 h-8 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-blue-400 text-[16px]">campaign</span></div>
+            <div class="flex-1"><p class="text-sm text-on-surface font-medium">Campaign launched — Q3 Outreach</p><p class="text-xs text-on-surface-variant">480 contacts · Email · 2 days ago</p></div>
+            <span class="text-xs px-2 py-0.5 bg-blue-500/10 text-blue-400 rounded-full">Live</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .spinning { animation: spin 1s linear infinite; display: inline-block; }
+</style>
+<script>
+  // ── Newsletter ───────────────────────────────────────────────
+  function subscribeNewsletter() {
+    const input = document.getElementById('newsletter-email');
+    const email = input.value.trim();
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!emailOk) {
+      input.classList.add('border-red-400');
+      input.placeholder = 'Enter a valid email';
+      setTimeout(() => { input.classList.remove('border-red-400'); input.placeholder = 'Enter your work email'; }, 2000);
+      return;
+    }
+    input.value = '';
+    input.placeholder = '✓ You\'re subscribed!';
+    input.disabled = true;
+    setTimeout(() => { input.placeholder = 'Enter your work email'; input.disabled = false; }, 3000);
+  }
+
+  // ── Expert Modal ─────────────────────────────────────────────
+  function openExpertModal() {
+    document.getElementById('expert-modal').classList.remove('hidden');
+    document.getElementById('expert-form-wrap').classList.remove('hidden');
+    document.getElementById('expert-success').classList.add('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeExpertModal() {
+    document.getElementById('expert-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function submitExpertForm() {
+    const fname = document.getElementById('expert-fname').value.trim();
+    const email = document.getElementById('expert-email').value.trim();
+    let valid = true;
+
+    document.getElementById('expert-err-fname').classList.toggle('hidden', !!fname);
+    if (!fname) valid = false;
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById('expert-err-email').classList.toggle('hidden', emailOk);
+    if (!emailOk) valid = false;
+
+    if (!valid) return;
+
+    // Show loading
+    const btn = document.getElementById('expert-submit-btn');
+    const txt = document.getElementById('expert-btn-text');
+    const spin = document.getElementById('expert-spinner');
+    btn.disabled = true;
+    txt.textContent = 'Sending...';
+    spin.classList.remove('hidden');
+
+    setTimeout(() => {
+      btn.disabled = false;
+      txt.textContent = 'Request a Call';
+      spin.classList.add('hidden');
+      // Show success
+      document.getElementById('expert-confirm-email').textContent = email;
+      document.getElementById('expert-form-wrap').classList.add('hidden');
+      document.getElementById('expert-success').classList.remove('hidden');
+    }, 1800);
+  }
+
+  // Close expert modal on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeDemoModal(); closeExpertModal(); }
+  });
+
+  // ── Demo Modal ───────────────────────────────────────────────
+  let demoTimer = null;
+  let demoSeconds = 0;
+  const demoDuration = 180; // 3 minutes
+
+  function openDemoModal() {
+    document.getElementById('demo-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDemoModal() {
+    stopDemo({ stopPropagation: () => {} });
+    document.getElementById('demo-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  function playDemo() {
+    if (demoTimer) return;
+    document.getElementById('demo-play-btn').classList.add('hidden');
+    document.getElementById('demo-playing').classList.remove('hidden');
+    demoSeconds = 0;
+    demoTimer = setInterval(() => {
+      demoSeconds++;
+      const pct = (demoSeconds / demoDuration) * 100;
+      document.getElementById('demo-progress').style.width = pct + '%';
+      const m = Math.floor(demoSeconds / 60);
+      const s = String(demoSeconds % 60).padStart(2, '0');
+      document.getElementById('demo-time').textContent = m + ':' + s + ' / 3:00';
+      if (demoSeconds >= demoDuration) stopDemo({ stopPropagation: () => {} });
+    }, 1000);
+  }
+
+  function stopDemo(e) {
+    e.stopPropagation();
+    clearInterval(demoTimer);
+    demoTimer = null;
+    demoSeconds = 0;
+    const playBtn = document.getElementById('demo-play-btn');
+    const playing = document.getElementById('demo-playing');
+    const progress = document.getElementById('demo-progress');
+    const time = document.getElementById('demo-time');
+    if (playBtn) playBtn.classList.remove('hidden');
+    if (playing) playing.classList.add('hidden');
+    if (progress) progress.style.width = '0%';
+    if (time) time.textContent = '0:00 / 3:00';
+  }
+
+  // Close modal on Escape key — handled above
+
+  // ── Live Engine Ticker ───────────────────────────────────────
+  // Live clock
+  function updateLiveTick() {
+    const now = new Date();
+    const h = String(now.getHours()).padStart(2,'0');
+    const m = String(now.getMinutes()).padStart(2,'0');
+    const s = String(now.getSeconds()).padStart(2,'0');
+    const el = document.getElementById('live-tick');
+    if (el) el.textContent = h + ':' + m + ':' + s;
+  }
+  setInterval(updateLiveTick, 1000);
+  updateLiveTick();
+
+  // Animated counters
+  function animateCounter(id, target, prefix, suffix, duration) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let start = 0;
+    const step = target / (duration / 50);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { start = target; clearInterval(timer); }
+      el.textContent = prefix + Math.floor(start).toLocaleString() + suffix;
+    }, 50);
+  }
+
+  // Fluctuating live numbers
+  function randomBetween(a, b) { return Math.floor(Math.random() * (b - a + 1)) + a; }
+  function updateLiveStats() {
+    const usersEl = document.getElementById('stat-users');
+    const analysesEl = document.getElementById('stat-analyses');
+    const revenueEl = document.getElementById('stat-revenue');
+    if (usersEl) usersEl.textContent = randomBetween(1840, 2100).toLocaleString();
+    if (analysesEl) analysesEl.textContent = randomBetween(42, 89);
+    if (revenueEl) revenueEl.textContent = '$' + randomBetween(3200000, 3800000).toLocaleString();
+  }
+
+  // First load — count up animation
+  setTimeout(() => {
+    animateCounter('stat-users', randomBetween(1840, 2100), '', '', 1200);
+    animateCounter('stat-analyses', randomBetween(42, 89), '', '', 1000);
+    animateCounter('stat-revenue', randomBetween(3200000, 3800000), '$', '', 1400);
+  }, 400);
+
+  // Then fluctuate every 4 seconds
+  setInterval(updateLiveStats, 4000);
+
+  // ── Navigation ──────────────────────────────────────────────
+  const navPages = ['home','solutions','platform','pricing'];
+  const authPages = ['login','signup','dashboard'];
+  const allPages = [...navPages, ...authPages];
+
+  function navigate(page) {
+    allPages.forEach(p => {
+      const el = document.getElementById('page-' + p);
+      if (el) el.classList.remove('active');
+    });
+    const target = document.getElementById('page-' + page);
+    if (target) target.classList.add('active');
+
+    // Navbar highlight — only for main nav pages
+    document.querySelectorAll('.nav-link').forEach(el => {
+      el.classList.remove('text-primary-container');
+      el.classList.add('text-on-surface-variant');
+    });
+    const activeLink = document.getElementById('nav-' + page);
+    if (activeLink) {
+      activeLink.classList.remove('text-on-surface-variant');
+      activeLink.classList.add('text-primary-container');
+    }
+
+    // Hide footer & navbar on dashboard
+    const footer = document.querySelector('footer');
+    const header = document.querySelector('header');
+    if (page === 'dashboard') {
+      if (footer) footer.style.display = 'none';
+      if (header) header.style.display = 'none';
+    } else {
+      if (footer) footer.style.display = '';
+      if (header) header.style.display = '';
+    }
+
+    // Reset signup steps when navigating to signup
+    if (page === 'signup') resetSignup();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Login Logic ──────────────────────────────────────────────
+  function handleLogin(e) {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value.trim();
+    const pass  = document.getElementById('login-password').value;
+    let valid = true;
+
+    // Validate email
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById('login-email-err').classList.toggle('hidden', emailOk);
+    if (!emailOk) valid = false;
+
+    // Validate password
+    const passOk = pass.length >= 6;
+    document.getElementById('login-pass-err').classList.toggle('hidden', passOk);
+    if (!passOk) valid = false;
+
+    if (!valid) return;
+
+    // Show loading
+    const btn  = document.getElementById('login-btn');
+    const txt  = document.getElementById('login-btn-text');
+    const spin = document.getElementById('login-spinner');
+    btn.disabled = true;
+    txt.textContent = 'Signing in...';
+    spin.classList.remove('hidden');
+    spin.classList.add('spinning');
+
+    // Simulate API call
+    setTimeout(() => {
+      btn.disabled = false;
+      txt.textContent = 'Sign In';
+      spin.classList.add('hidden');
+      spin.classList.remove('spinning');
+      navigate('dashboard');
+    }, 1800);
+  }
+
+  // ── Signup Steps ──────────────────────────────────────────────
+  function goToStep2() {
+    const fname = document.getElementById('signup-fname').value.trim();
+    const lname = document.getElementById('signup-lname').value.trim();
+    const email = document.getElementById('signup-email').value.trim();
+    const pass  = document.getElementById('signup-password').value;
+    let valid = true;
+
+    document.getElementById('err-fname').classList.toggle('hidden', !!fname); if (!fname) valid = false;
+    document.getElementById('err-lname').classList.toggle('hidden', !!lname); if (!lname) valid = false;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    document.getElementById('err-email').classList.toggle('hidden', emailOk); if (!emailOk) valid = false;
+    const passOk = pass.length >= 8;
+    document.getElementById('err-pass').classList.toggle('hidden', passOk); if (!passOk) valid = false;
+
+    if (!valid) return;
+
+    document.getElementById('signup-step-1').classList.add('hidden');
+    document.getElementById('signup-step-2').classList.remove('hidden');
+    document.getElementById('step-dot-2').classList.remove('bg-surface-container','border','border-outline-variant/30','text-on-surface-variant');
+    document.getElementById('step-dot-2').classList.add('bg-primary-container','text-on-primary-container');
+    document.getElementById('signup-title').textContent = 'Choose your plan';
+    document.getElementById('signup-subtitle').textContent = 'All plans include a 14-day free trial.';
+  }
+
+  function backToStep1() {
+    document.getElementById('signup-step-2').classList.add('hidden');
+    document.getElementById('signup-step-1').classList.remove('hidden');
+    document.getElementById('step-dot-2').classList.add('bg-surface-container','border','border-outline-variant/30','text-on-surface-variant');
+    document.getElementById('step-dot-2').classList.remove('bg-primary-container','text-on-primary-container');
+    document.getElementById('signup-title').textContent = 'Create your account';
+    document.getElementById('signup-subtitle').textContent = 'Start your 14-day free trial. No credit card required.';
+  }
+
+  function goToStep3() {
+    document.getElementById('signup-step-2').classList.add('hidden');
+    document.getElementById('signup-step-3').classList.remove('hidden');
+    document.getElementById('step-dot-3').classList.remove('bg-surface-container','border','border-outline-variant/30','text-on-surface-variant');
+    document.getElementById('step-dot-3').classList.add('bg-primary-container','text-on-primary-container');
+    document.getElementById('signup-title').textContent = 'Account created!';
+    document.getElementById('signup-subtitle').textContent = 'Welcome to GrowthPilot AI.';
+  }
+
+  function resetSignup() {
+    document.getElementById('signup-step-1').classList.remove('hidden');
+    document.getElementById('signup-step-2').classList.add('hidden');
+    document.getElementById('signup-step-3').classList.add('hidden');
+    ['step-dot-2','step-dot-3'].forEach(id => {
+      const el = document.getElementById(id);
+      el.classList.remove('bg-primary-container','text-on-primary-container');
+      el.classList.add('bg-surface-container','border','border-outline-variant/30','text-on-surface-variant');
+    });
+    document.getElementById('signup-title').textContent = 'Create your account';
+    document.getElementById('signup-subtitle').textContent = 'Start your 14-day free trial. No credit card required.';
+  }
+
+  // ── Password Toggle ──────────────────────────────────────────
+  function togglePassword(inputId, iconId) {
+    const input = document.getElementById(inputId);
+    const icon  = document.getElementById(iconId);
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  // ── Scroll animation ─────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('opacity-100');
+        entry.target.classList.remove('opacity-0', 'translate-y-6');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section > div').forEach(el => {
+    el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-6', 'ease-out');
+    observer.observe(el);
+  });
+</script>
 </body></html>
