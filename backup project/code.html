@@ -1508,6 +1508,138 @@
           </div>
         </div>
       </div>
+
+      <!-- ── Pain Point Analysis ── -->
+      <div class="mt-6 p-8 bg-surface-container-low border border-outline-variant/20 rounded-xl">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-9 h-9 bg-primary-container/10 rounded-xl flex items-center justify-center">
+            <span class="material-symbols-outlined text-primary-container text-[20px]">troubleshoot</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-on-surface">Pain Point Analysis</h3>
+            <p class="text-xs text-on-surface-variant">Describe your business challenge — AI will analyze and suggest solutions</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="mt-6" id="pain-form-section">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="block text-xs font-medium text-on-surface mb-2">Business / Industry</label>
+              <select id="pain-industry" class="w-full px-4 py-3 bg-surface border border-outline-variant/30 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary-container transition-colors">
+                <option value="">Select your industry</option>
+                <option>SaaS / Software</option><option>E-commerce / Retail</option><option>Healthcare</option>
+                <option>Finance / Fintech</option><option>Marketing Agency</option><option>Manufacturing</option>
+                <option>Real Estate</option><option>Education</option><option>Other</option>
+              </select>
+              <p id="pain-err-industry" class="text-red-400 text-xs mt-1 hidden">Please select an industry.</p>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-on-surface mb-2">Company Size</label>
+              <select id="pain-size" class="w-full px-4 py-3 bg-surface border border-outline-variant/30 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary-container transition-colors">
+                <option value="">Select team size</option>
+                <option>1–10</option><option>11–50</option><option>51–200</option><option>201–1000</option><option>1000+</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-on-surface mb-2">Current Monthly Revenue</label>
+              <select id="pain-revenue" class="w-full px-4 py-3 bg-surface border border-outline-variant/30 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary-container transition-colors">
+                <option value="">Select revenue range</option>
+                <option>Less than $10K</option><option>$10K – $50K</option><option>$50K – $200K</option>
+                <option>$200K – $1M</option><option>$1M+</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-on-surface mb-2">Biggest Growth Challenge</label>
+              <select id="pain-challenge" class="w-full px-4 py-3 bg-surface border border-outline-variant/30 rounded-xl text-on-surface text-sm focus:outline-none focus:border-primary-container transition-colors">
+                <option value="">Select primary challenge</option>
+                <option>Low lead generation</option><option>High customer churn</option><option>Poor conversion rate</option>
+                <option>Lack of market visibility</option><option>Inefficient sales process</option>
+                <option>High customer acquisition cost</option><option>No product-market fit</option><option>Scaling operations</option>
+              </select>
+              <p id="pain-err-challenge" class="text-red-400 text-xs mt-1 hidden">Please select a challenge.</p>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label class="block text-xs font-medium text-on-surface mb-2">Describe your pain point in detail</label>
+            <textarea id="pain-description" rows="4" placeholder="e.g. We get traffic but visitors are not converting into paying customers. Our trial-to-paid conversion is around 2%..."
+              class="w-full px-4 py-3 bg-surface border border-outline-variant/30 rounded-xl text-on-surface placeholder-outline text-sm focus:outline-none focus:border-primary-container transition-colors resize-none"></textarea>
+            <p id="pain-err-desc" class="text-red-400 text-xs mt-1 hidden">Please describe your pain point.</p>
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-medium text-on-surface mb-3">Affected areas <span class="text-on-surface-variant">(select all that apply)</span></label>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Sales</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Marketing</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Customer Retention</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Product</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Operations</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Pricing</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Team / Hiring</button>
+              <button type="button" onclick="toggleTag(this)" class="pain-tag px-3 py-1.5 border border-outline-variant/30 rounded-full text-xs text-on-surface-variant hover:border-primary-container/50 transition-all">Technology</button>
+            </div>
+          </div>
+          <button onclick="runPainAnalysis()" id="pain-analyze-btn"
+            class="px-8 py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px]">psychology</span>
+            <span id="pain-btn-text">Analyze Pain Points</span>
+            <span id="pain-spinner" class="hidden material-symbols-outlined text-[18px] spinning">autorenew</span>
+          </button>
+        </div>
+
+        <!-- Results -->
+        <div id="pain-results" class="hidden mt-8 pt-8 border-t border-outline-variant/20">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+              <p class="font-semibold text-on-surface text-sm">Analysis Complete</p>
+            </div>
+            <button onclick="resetPainAnalysis()" class="text-xs text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1">
+              <span class="material-symbols-outlined text-[14px]">refresh</span> New Analysis
+            </button>
+          </div>
+          <!-- Score -->
+          <div class="p-5 bg-surface rounded-xl border border-outline-variant/20 mb-5">
+            <div class="flex items-center justify-between mb-3">
+              <p class="text-sm font-semibold text-on-surface">Overall Pain Severity Score</p>
+              <span id="pain-score-badge" class="text-xs font-bold px-3 py-1 rounded-full"></span>
+            </div>
+            <div class="w-full h-3 bg-outline-variant/20 rounded-full overflow-hidden mb-2">
+              <div id="pain-score-bar" class="h-full rounded-full transition-all duration-1000" style="width:0%"></div>
+            </div>
+            <p id="pain-score-label" class="text-xs text-on-surface-variant"></p>
+          </div>
+          <!-- Findings -->
+          <div class="mb-5">
+            <p class="text-xs font-bold text-on-surface uppercase tracking-wider mb-3">Key Findings</p>
+            <div id="pain-findings" class="space-y-3"></div>
+          </div>
+          <!-- Actions -->
+          <div class="mb-5">
+            <p class="text-xs font-bold text-on-surface uppercase tracking-wider mb-3">Recommended Actions</p>
+            <div id="pain-actions" class="space-y-3"></div>
+          </div>
+          <!-- Impact -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="p-4 bg-surface rounded-xl border border-green-500/20 text-center">
+              <p class="text-xs text-on-surface-variant mb-1">Revenue Impact</p>
+              <p id="pain-revenue-impact" class="text-lg font-bold text-green-400"></p>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-primary-container/20 text-center">
+              <p class="text-xs text-on-surface-variant mb-1">Time to Results</p>
+              <p id="pain-time-impact" class="text-lg font-bold text-primary-container"></p>
+            </div>
+            <div class="p-4 bg-surface rounded-xl border border-blue-500/20 text-center">
+              <p class="text-xs text-on-surface-variant mb-1">Confidence Score</p>
+              <p id="pain-confidence" class="text-lg font-bold text-blue-400"></p>
+            </div>
+          </div>
+          <button onclick="navigate('signup')" class="w-full py-3 bg-primary-container text-on-primary-container font-bold rounded-xl hover:brightness-110 transition-all text-sm">
+            Get Full AI Growth Plan <span class="material-symbols-outlined text-[16px] align-middle ml-1">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1532,6 +1664,157 @@
     input.placeholder = '✓ You\'re subscribed!';
     input.disabled = true;
     setTimeout(() => { input.placeholder = 'Enter your work email'; input.disabled = false; }, 3000);
+  }
+
+  // ── Pain Point Analysis ──────────────────────────────────────
+  function toggleTag(btn) {
+    btn.classList.toggle('border-primary-container');
+    btn.classList.toggle('text-primary-container');
+    btn.classList.toggle('bg-primary-container/10');
+    btn.classList.toggle('border-outline-variant/30');
+    btn.classList.toggle('text-on-surface-variant');
+  }
+
+  function runPainAnalysis() {
+    const industry  = document.getElementById('pain-industry').value;
+    const challenge = document.getElementById('pain-challenge').value;
+    const desc      = document.getElementById('pain-description').value.trim();
+    let valid = true;
+
+    document.getElementById('pain-err-industry').classList.toggle('hidden', !!industry);
+    if (!industry) valid = false;
+    document.getElementById('pain-err-challenge').classList.toggle('hidden', !!challenge);
+    if (!challenge) valid = false;
+    document.getElementById('pain-err-desc').classList.toggle('hidden', !!desc);
+    if (!desc) valid = false;
+    if (!valid) return;
+
+    // Loading state
+    const btn  = document.getElementById('pain-analyze-btn');
+    const txt  = document.getElementById('pain-btn-text');
+    const spin = document.getElementById('pain-spinner');
+    btn.disabled = true;
+    txt.textContent = 'Analyzing...';
+    spin.classList.remove('hidden');
+
+    setTimeout(() => {
+      btn.disabled = false;
+      txt.textContent = 'Analyze Pain Points';
+      spin.classList.add('hidden');
+      showPainResults(industry, challenge, desc);
+    }, 2200);
+  }
+
+  function showPainResults(industry, challenge, desc) {
+    // Score logic based on challenge
+    const scoreMap = {
+      'High customer churn': 82,
+      'Poor conversion rate': 76,
+      'Low lead generation': 68,
+      'High customer acquisition cost': 72,
+      'Lack of market visibility': 65,
+      'Inefficient sales process': 70,
+      'No product-market fit': 88,
+      'Scaling operations': 60
+    };
+    const score = scoreMap[challenge] || 70;
+    let severity, badgeClass, barClass;
+    if (score >= 80) { severity = 'Critical'; badgeClass = 'bg-red-500/20 text-red-400'; barClass = 'bg-red-400'; }
+    else if (score >= 65) { severity = 'High'; badgeClass = 'bg-primary-container/20 text-primary-container'; barClass = 'bg-primary-container'; }
+    else { severity = 'Moderate'; badgeClass = 'bg-yellow-500/20 text-yellow-400'; barClass = 'bg-yellow-400'; }
+
+    document.getElementById('pain-score-badge').textContent = severity;
+    document.getElementById('pain-score-badge').className = 'text-xs font-bold px-3 py-1 rounded-full ' + badgeClass;
+    document.getElementById('pain-score-bar').className = 'h-full rounded-full transition-all duration-1000 ' + barClass;
+    document.getElementById('pain-score-label').textContent = score + '/100 — ' + severity + ' impact on growth trajectory for ' + industry + ' businesses.';
+    setTimeout(() => { document.getElementById('pain-score-bar').style.width = score + '%'; }, 100);
+
+    // Findings
+    const findingsMap = {
+      'High customer churn': [
+        { icon: 'warning', color: 'text-red-400', bg: 'bg-red-500/10', text: 'Customer lifetime value is being severely eroded — churn is your #1 revenue leak.' },
+        { icon: 'analytics', color: 'text-primary-container', bg: 'bg-primary-container/10', text: 'Onboarding friction is likely the root cause — users not reaching "aha moment" fast enough.' },
+        { icon: 'group', color: 'text-blue-400', bg: 'bg-blue-500/10', text: 'Competitor switching cost is low — differentiation and stickiness features are missing.' }
+      ],
+      'Poor conversion rate': [
+        { icon: 'funnel', color: 'text-red-400', bg: 'bg-red-500/10', text: 'Top-of-funnel traffic is not converting — messaging or ICP mismatch detected.' },
+        { icon: 'psychology', color: 'text-primary-container', bg: 'bg-primary-container/10', text: 'Value proposition is unclear at the decision stage — pricing page likely needs restructuring.' },
+        { icon: 'schedule', color: 'text-yellow-400', bg: 'bg-yellow-500/10', text: 'Time-to-value is too long — users churn during trial before seeing results.' }
+      ],
+      'Low lead generation': [
+        { icon: 'search', color: 'text-red-400', bg: 'bg-red-500/10', text: 'Organic visibility is low — SEO and content strategy gap identified.' },
+        { icon: 'campaign', color: 'text-primary-container', bg: 'bg-primary-container/10', text: 'Paid acquisition channels are either absent or not optimized for ICP targeting.' },
+        { icon: 'share', color: 'text-blue-400', bg: 'bg-blue-500/10', text: 'No referral or partner channel active — significant untapped growth lever.' }
+      ]
+    };
+    const defaultFindings = [
+      { icon: 'warning', color: 'text-red-400', bg: 'bg-red-500/10', text: 'Core growth bottleneck identified: ' + challenge + ' is limiting revenue expansion.' },
+      { icon: 'analytics', color: 'text-primary-container', bg: 'bg-primary-container/10', text: 'Process inefficiencies detected in the ' + industry + ' pipeline — automation can reduce friction by ~40%.' },
+      { icon: 'lightbulb', color: 'text-yellow-400', bg: 'bg-yellow-500/10', text: 'Competitor analysis shows 3 structural gaps that can be exploited within 60 days.' }
+    ];
+    const findings = findingsMap[challenge] || defaultFindings;
+    document.getElementById('pain-findings').innerHTML = findings.map(f => `
+      <div class="flex items-start gap-3 p-4 bg-surface rounded-xl border border-outline-variant/15">
+        <div class="w-8 h-8 rounded-lg ${f.bg} flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined ${f.color} text-[17px]">${f.icon}</span>
+        </div>
+        <p class="text-sm text-on-surface-variant leading-relaxed">${f.text}</p>
+      </div>`).join('');
+
+    // Actions
+    const actionsMap = {
+      'High customer churn': ['Implement a 3-touch onboarding email sequence within first 7 days', 'Add in-app progress tracker so users see value milestones', 'Launch quarterly NPS survey + automated follow-up for detractors', 'Create a "success playbook" for new users — reduce time-to-value to < 48 hours'],
+      'Poor conversion rate': ['A/B test headline and CTA on landing page — target 15% lift', 'Add social proof (case studies, logos) above the fold', 'Simplify pricing page — remove confusion with a comparison table', 'Implement live chat or chatbot on high-intent pages'],
+      'Low lead generation': ['Launch SEO content strategy targeting bottom-of-funnel keywords', 'Set up LinkedIn outbound sequence for ICP decision-makers', 'Create a free tool or template to drive inbound leads', 'Launch referral program with 2-sided incentive ($20 credit)']
+    };
+    const defaultActions = [
+      'Map full customer journey and identify top 3 drop-off points',
+      'Run a 2-week sprint focused on ' + challenge.toLowerCase() + ' using GrowthPilot AI recommendations',
+      'Implement weekly growth review cadence with KPI dashboard',
+      'Deploy AI-powered segmentation to personalize outreach by ICP segment'
+    ];
+    const actions = actionsMap[challenge] || defaultActions;
+    document.getElementById('pain-actions').innerHTML = actions.map((a, i) => `
+      <div class="flex items-start gap-3 p-4 bg-surface rounded-xl border border-outline-variant/15">
+        <div class="w-6 h-6 rounded-full bg-primary-container/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="text-primary-container text-[11px] font-bold">${i+1}</span>
+        </div>
+        <p class="text-sm text-on-surface leading-relaxed">${a}</p>
+      </div>`).join('');
+
+    // Impact metrics
+    const impacts = {
+      'High customer churn':             { rev: '+$18K–$34K/mo', time: '30–60 days', conf: '91%' },
+      'Poor conversion rate':            { rev: '+$12K–$28K/mo', time: '14–30 days', conf: '87%' },
+      'Low lead generation':             { rev: '+$8K–$22K/mo',  time: '45–90 days', conf: '83%' },
+      'High customer acquisition cost':  { rev: '+$10K–$20K/mo', time: '30–45 days', conf: '85%' },
+      'Lack of market visibility':       { rev: '+$6K–$18K/mo',  time: '60–90 days', conf: '78%' },
+      'Inefficient sales process':       { rev: '+$14K–$26K/mo', time: '21–45 days', conf: '88%' },
+      'No product-market fit':           { rev: '+$20K–$50K/mo', time: '60–120 days', conf: '72%' },
+      'Scaling operations':              { rev: '+$15K–$35K/mo', time: '45–75 days', conf: '80%' }
+    };
+    const imp = impacts[challenge] || { rev: '+$10K–$25K/mo', time: '30–60 days', conf: '82%' };
+    document.getElementById('pain-revenue-impact').textContent = imp.rev;
+    document.getElementById('pain-time-impact').textContent = imp.time;
+    document.getElementById('pain-confidence').textContent = imp.conf;
+
+    // Show results
+    document.getElementById('pain-form-section').classList.add('hidden');
+    document.getElementById('pain-results').classList.remove('hidden');
+    document.getElementById('pain-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function resetPainAnalysis() {
+    document.getElementById('pain-results').classList.add('hidden');
+    document.getElementById('pain-form-section').classList.remove('hidden');
+    document.getElementById('pain-score-bar').style.width = '0%';
+    document.getElementById('pain-description').value = '';
+    document.getElementById('pain-industry').value = '';
+    document.getElementById('pain-challenge').value = '';
+    document.querySelectorAll('.pain-tag').forEach(t => {
+      t.classList.remove('border-primary-container','text-primary-container','bg-primary-container/10');
+      t.classList.add('border-outline-variant/30','text-on-surface-variant');
+    });
   }
 
   // ── Expert Modal ─────────────────────────────────────────────
